@@ -15,7 +15,9 @@ try:
     base=os.environ.get('RELAYFY_URL','http://127.0.0.1:8765')
     if not base.startswith('http://127.0.0.1:'):raise ValueError('Gunakan layanan loopback lokal.')
     req=urllib.request.Request(base+'/api/'+a.operation,data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+token,'Content-Type':'application/json'},method='POST')
-    with urllib.request.urlopen(req,timeout=20) as r:result=json.load(r)
+    # Loopback traffic must never pass through HTTP_PROXY/HTTPS_PROXY.
+    opener=urllib.request.build_opener(urllib.request.ProxyHandler({}))
+    with opener.open(req,timeout=20) as r:result=json.load(r)
     print(json.dumps(result,ensure_ascii=False,indent=2))
 except urllib.error.HTTPError as e:
     print(e.read().decode(),file=sys.stderr);sys.exit(1)
