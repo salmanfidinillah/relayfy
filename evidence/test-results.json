@@ -1,0 +1,120 @@
+{
+  "run_at": "2026-11-01T15:17:30.469301+00:00",
+  "scope": "Synthetic deterministic core + local HTTP; NOT actual WorkBuddy/LLM or official tests",
+  "tests": 28,
+  "passed": 28,
+  "results": [
+    {
+      "test": "test_relayfy.RelayfyTests.test_01_source_filter_before_search",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_02_manager_can_read_explicit_acl",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_03_denial_symmetric",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_04_role_spoof_no_effect",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_05_citation_allowed",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_06_citation_denied",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_07_conflict_not_silently_resolved",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_08_missing_pic_deadline",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_09_injection_quarantine",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_10_no_unknown_fabrication",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_11_tasks_complete_and_open",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_12_pending_does_not_execute",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_13_import_approved",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_14_receiver_cannot_import",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_15_accept_before_review",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_16_review_then_accept",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_17_duplicate_approval_blocked",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_18_stale_plan_blocked",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_19_revoke_hides_citation_and_brief",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_20_revoke_hides_historical_log",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_21_audit_is_user_scoped",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_22_manager_brief_not_shared",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_23_clarification_persisted",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_24_new_input_reopens_accepted",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_25_create_workspace",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_26_invalid_session",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_27_cross_workspace_access",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_28_http_boundary",
+      "status": "PASS"
+    }
+  ]
+}

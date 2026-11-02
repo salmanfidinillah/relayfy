@@ -1,0 +1,124 @@
+{
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "c56cf2b09a96af0a70e7f316d16e7aec06708a1e1424c2e1b6f21f2c4a86a88d"
+    },
+    {
+      "path": "CHECKLIST.md",
+      "sha256": "3c4d35459d08de8e231ea8480a00b7e78e44e20938a0034f3242925d100cd611"
+    },
+    {
+      "path": "PROJECT_BRIEF.md",
+      "sha256": "9fbf78ae3f30124c1d9c68355ef25b442de2af1b204dc03702e38a31dbbd6133"
+    },
+    {
+      "path": "README.md",
+      "sha256": "2ccd51a8eb08576ba8f4ef81a9406c72bac4469c9ce65a511aa417ed58bdacd6"
+    },
+    {
+      "path": "approve.py",
+      "sha256": "11afa7c7ecfe915c1781151d66ea9ea33e21309cbfc173f2d048b994517cbdae"
+    },
+    {
+      "path": "demo.py",
+      "sha256": "1851b895e817680d76d1bda1e853ddcabc7e3230d717f84305d3dbf3dbc1e051"
+    },
+    {
+      "path": "evidence/demo-transcript.json",
+      "sha256": "2d94944fad4f26fe4d400b46337682e686c21e162edbfed82e478b6a95acb92b"
+    },
+    {
+      "path": "evidence/test-results.json",
+      "sha256": "5e41e5327fe1eeb04008272ba8633700d69b7be2cacce89704cb3451f1790873"
+    },
+    {
+      "path": "examples/query.json",
+      "sha256": "75fd4c753261702df1260e92f365cde5df98cb7de661bedf86439f5470b10490"
+    },
+    {
+      "path": "examples/tasks.csv",
+      "sha256": "819b3fe95fbcb29ad1b82d04b672d335af144a7e86a5dfc952744eabf9a65c34"
+    },
+    {
+      "path": "import_source.py",
+      "sha256": "b8a96594ef714dac1966367065682c2f2a6e966749385cd846f9185294370d9a"
+    },
+    {
+      "path": "service/core.py",
+      "sha256": "f9162dc1eba7b7babf819f63f01909fc954b136f8b44122728db324f133a7831"
+    },
+    {
+      "path": "service/server.py",
+      "sha256": "206cdf55a35b81e672c8b67cb5cf09d161168561c42b93b3a1c5b08b6f843254"
+    },
+    {
+      "path": "start.py",
+      "sha256": "db83422a107b91a19ec39f209afe9b61f9052b6871b2f92d7c0467d90d505d37"
+    },
+    {
+      "path": "submission/00_index.md",
+      "sha256": "ebcb92f1ea03b5e0ddc7bba5e88faf6bf156977416dccb1a698079b5ab9c5613"
+    },
+    {
+      "path": "submission/01_description.md",
+      "sha256": "03992b3e58896ae5f6d7d66511c0b9bfe1d7e58bb0bfb1534d7c8bb6c2348f88"
+    },
+    {
+      "path": "submission/02_accountability_sheet.md",
+      "sha256": "692b2c204e79fe405c79f1aa06d0a8e41d5b8cd1a020afab2279af5b7be572a1"
+    },
+    {
+      "path": "submission/03_test_results.md",
+      "sha256": "a6d1629cf501a2dcf4642f4d1c51e95c4b2b9e5f297e2876d4c5947baf1914b9"
+    },
+    {
+      "path": "submission/04_architecture.md",
+      "sha256": "d15e877b6279eac68a6fb44dd735a680ceab1ffc3f32bc9b5645db747d200cb3"
+    },
+    {
+      "path": "submission/04_architecture.svg",
+      "sha256": "39e04a3822e25ffbd1a721f598286d76134365fb3e61dbad3aa5a0f6003edc46"
+    },
+    {
+      "path": "submission/05_demo_video_script.md",
+      "sha256": "8bb3d3b80d122e0aea802fb154c715a79e637c389664a28e62bcf0c4c217b4cb"
+    },
+    {
+      "path": "submission/06_product_sharing.md",
+      "sha256": "a41715cbfb813f9bfb19942716b20479fcc75f64122ac98ea60fe10cb2e408c1"
+    },
+    {
+      "path": "submission/07_submission_draft.md",
+      "sha256": "21b6d9ca487c19a819623712f1557fc05811fb73b43e9acfd66d9445052f7166"
+    },
+    {
+      "path": "submission/08_sources.md",
+      "sha256": "b9d8d30d09655d91eb7085a90147309a85499824cde9d4fe406ef7e5f476e524"
+    },
+    {
+      "path": "tests/WORKBUDDY_CASES.md",
+      "sha256": "446ad9aefce65c07af6fb2d494e3322311f6c89b86d51e145d765efc0eaeac2c"
+    },
+    {
+      "path": "tests/run_tests.py",
+      "sha256": "c34069b5fffa075d3730a724787a456f2fbb31d18f18caab291689a27291c147"
+    },
+    {
+      "path": "tests/test_relayfy.py",
+      "sha256": "c0f855dd4919afd114b668baa00b032140cf87e93987c9c89ba4dc17edf4d3b7"
+    },
+    {
+      "path": "workbuddy/AGENTS.md",
+      "sha256": "2de192514a0f3fc7d472f7c4db3eda20f611020002ef21babbf65c7f9999e950"
+    },
+    {
+      "path": "workbuddy/START_HERE.md",
+      "sha256": "b1de1debe7bf295d12536c16f387f4bc239e597db7a68358204f960d54c87795"
+    },
+    {
+      "path": "workbuddy/bridge.py",
+      "sha256": "af84f2c164a0401299ff092dac4d71c006b3de6342f2ea5ca5e77df1d055b06b"
+    }
+  ]
+}

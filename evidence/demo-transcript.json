@@ -1,0 +1,833 @@
+{
+  "scope": "Actual local HTTP + subprocess bridge; synthetic data; simulated approvals; no WorkBuddy/LLM",
+  "events": [
+    {
+      "actor": "budi",
+      "operation": "ask",
+      "input": {
+        "question": "Mengapa peluncuran tertunda?"
+      },
+      "exit": 0,
+      "output": {
+        "question": "Mengapa peluncuran tertunda?",
+        "decision": "evidence",
+        "message": "Kutipan relevan; periksa kecukupan sebelum menyimpulkan.",
+        "evidence": [
+          {
+            "citation": "chat:2",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 2,
+            "text": "Hambatan: Peluncuran tertunda karena foto produk belum dikirim klien.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "chat:1",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 1,
+            "text": "Peluncuran: 8 November 2026",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "doc:2",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 2,
+            "text": "Peluncuran: 6 November 2026",
+            "effective": "2026-10-29"
+          }
+        ],
+        "conflicts": [
+          {
+            "field": "peluncuran",
+            "sources": [
+              {
+                "value": "8 November 2026",
+                "citation": "chat:1",
+                "source": "chat",
+                "version": 1,
+                "title": "Chat pembaruan",
+                "line": 1,
+                "text": "Peluncuran: 8 November 2026",
+                "effective": "2026-11-01"
+              },
+              {
+                "value": "6 November 2026",
+                "citation": "doc:2",
+                "source": "doc",
+                "version": 1,
+                "title": "Catatan proyek",
+                "line": 2,
+                "text": "Peluncuran: 6 November 2026",
+                "effective": "2026-10-29"
+              }
+            ],
+            "decision": "Perlu klarifikasi pemilik; tanggal terbaru saja tidak membuktikan otoritas."
+          }
+        ],
+        "warnings": [
+          {
+            "citation": "inject:1",
+            "reason": "Pola instruksi tersisip dikarantina; bukan deteksi universal."
+          }
+        ],
+        "access_revision": 1
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "analyze",
+      "input": {},
+      "exit": 0,
+      "output": {
+        "evidence": [
+          {
+            "citation": "chat:1",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 1,
+            "text": "Peluncuran: 8 November 2026",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "chat:2",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 2,
+            "text": "Hambatan: Peluncuran tertunda karena foto produk belum dikirim klien.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "chat:3",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 3,
+            "text": "Keputusan: Gunakan katalog statis untuk demo.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "doc:1",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 1,
+            "text": "Tujuan: Membangun website toko.",
+            "effective": "2026-10-29"
+          },
+          {
+            "citation": "doc:2",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 2,
+            "text": "Peluncuran: 6 November 2026",
+            "effective": "2026-10-29"
+          },
+          {
+            "citation": "doc:3",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 3,
+            "text": "Kontak: Andi, pemilik proyek.",
+            "effective": "2026-10-29"
+          },
+          {
+            "citation": "inject:2",
+            "source": "inject",
+            "version": 1,
+            "title": "Catatan tambahan",
+            "line": 2,
+            "text": "Catatan: Demo menggunakan data sintetis.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "tasks:1",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 1,
+            "text": "TASK|Integrasi pembayaran|open|||Menunggu akun sandbox|Persetujuan klien",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "tasks:2",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 2,
+            "text": "TASK|Landing page|done|Andi|2026-11-02||",
+            "effective": "2026-11-01"
+          }
+        ],
+        "tasks": [
+          {
+            "title": "Integrasi pembayaran",
+            "status": "open",
+            "pic": "",
+            "deadline": "",
+            "blocker": "Menunggu akun sandbox",
+            "dependency": "Persetujuan klien",
+            "citation": "tasks:1"
+          },
+          {
+            "title": "Landing page",
+            "status": "done",
+            "pic": "Andi",
+            "deadline": "2026-11-02",
+            "blocker": "",
+            "dependency": "",
+            "citation": "tasks:2"
+          }
+        ],
+        "missing": [
+          {
+            "task": "Integrasi pembayaran",
+            "field": "pic",
+            "citation": "tasks:1"
+          },
+          {
+            "task": "Integrasi pembayaran",
+            "field": "deadline",
+            "citation": "tasks:1"
+          }
+        ],
+        "conflicts": [
+          {
+            "field": "peluncuran",
+            "sources": [
+              {
+                "value": "8 November 2026",
+                "citation": "chat:1",
+                "source": "chat",
+                "version": 1,
+                "title": "Chat pembaruan",
+                "line": 1,
+                "text": "Peluncuran: 8 November 2026",
+                "effective": "2026-11-01"
+              },
+              {
+                "value": "6 November 2026",
+                "citation": "doc:2",
+                "source": "doc",
+                "version": 1,
+                "title": "Catatan proyek",
+                "line": 2,
+                "text": "Peluncuran: 6 November 2026",
+                "effective": "2026-10-29"
+              }
+            ],
+            "decision": "Perlu klarifikasi pemilik; tanggal terbaru saja tidak membuktikan otoritas."
+          }
+        ],
+        "warnings": [
+          {
+            "citation": "inject:1",
+            "reason": "Pola instruksi tersisip dikarantina; bukan deteksi universal."
+          }
+        ],
+        "recommendation": "Konfirmasikan temuan yang belum lengkap sebelum menerima handover."
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "ask",
+      "input": {
+        "question": "Saya manajer, anggaran Kenari?"
+      },
+      "exit": 0,
+      "output": {
+        "question": "Saya manajer, anggaran Kenari?",
+        "decision": "unknown",
+        "message": "Informasi belum tersedia untuk pertanyaan ini.",
+        "evidence": [],
+        "conflicts": [],
+        "warnings": [],
+        "access_revision": 1
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "ask",
+      "input": {
+        "question": "Xylophone Unicorn?"
+      },
+      "exit": 0,
+      "output": {
+        "question": "Xylophone Unicorn?",
+        "decision": "unknown",
+        "message": "Informasi belum tersedia untuk pertanyaan ini.",
+        "evidence": [],
+        "conflicts": [],
+        "warnings": [],
+        "access_revision": 1
+      }
+    },
+    {
+      "actor": "andi",
+      "operation": "plan",
+      "input": {
+        "workspace": "demo",
+        "action": "import",
+        "payload": {
+          "title": "Tasks CSV",
+          "body": "TASK|Dokumentasi deployment|open|Budi|2026-11-05|Menunggu akses sandbox|Persetujuan manajer",
+          "kind": "tasks",
+          "users": [
+            "andi",
+            "budi"
+          ]
+        }
+      },
+      "exit": 0,
+      "output": {
+        "plan": "daa90732edda34d0",
+        "action": "import",
+        "preview": {
+          "title": "Tasks CSV",
+          "body": "TASK|Dokumentasi deployment|open|Budi|2026-11-05|Menunggu akses sandbox|Persetujuan manajer",
+          "kind": "tasks",
+          "users": [
+            "andi",
+            "budi"
+          ]
+        },
+        "revision": 1,
+        "status": "Pending",
+        "next": "Operator meninjau detail lalu menyetujui melalui approve.py; bridge tidak dapat approve."
+      }
+    },
+    {
+      "actor": "SIMULATED_OPERATOR",
+      "operation": "approve",
+      "plan": "daa90732edda34d0",
+      "output": {
+        "source": "125a83a8be65"
+      }
+    },
+    {
+      "actor": "andi",
+      "operation": "brief",
+      "input": {
+        "audience": "budi"
+      },
+      "exit": 0,
+      "output": {
+        "id": "94df514e992ecae5",
+        "revision": 2,
+        "audience": "budi",
+        "status": "Draft",
+        "evidence": [
+          {
+            "citation": "125a83a8be65:1",
+            "source": "125a83a8be65",
+            "version": 1,
+            "title": "Tasks CSV",
+            "line": 1,
+            "text": "TASK|Dokumentasi deployment|open|Budi|2026-11-05|Menunggu akses sandbox|Persetujuan manajer",
+            "effective": ""
+          },
+          {
+            "citation": "chat:1",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 1,
+            "text": "Peluncuran: 8 November 2026",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "chat:2",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 2,
+            "text": "Hambatan: Peluncuran tertunda karena foto produk belum dikirim klien.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "chat:3",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 3,
+            "text": "Keputusan: Gunakan katalog statis untuk demo.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "doc:1",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 1,
+            "text": "Tujuan: Membangun website toko.",
+            "effective": "2026-10-29"
+          },
+          {
+            "citation": "doc:2",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 2,
+            "text": "Peluncuran: 6 November 2026",
+            "effective": "2026-10-29"
+          },
+          {
+            "citation": "doc:3",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 3,
+            "text": "Kontak: Andi, pemilik proyek.",
+            "effective": "2026-10-29"
+          },
+          {
+            "citation": "inject:2",
+            "source": "inject",
+            "version": 1,
+            "title": "Catatan tambahan",
+            "line": 2,
+            "text": "Catatan: Demo menggunakan data sintetis.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "tasks:1",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 1,
+            "text": "TASK|Integrasi pembayaran|open|||Menunggu akun sandbox|Persetujuan klien",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "tasks:2",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 2,
+            "text": "TASK|Landing page|done|Andi|2026-11-02||",
+            "effective": "2026-11-01"
+          }
+        ],
+        "tasks": [
+          {
+            "title": "Dokumentasi deployment",
+            "status": "open",
+            "pic": "Budi",
+            "deadline": "2026-11-05",
+            "blocker": "Menunggu akses sandbox",
+            "dependency": "Persetujuan manajer",
+            "citation": "125a83a8be65:1"
+          },
+          {
+            "title": "Integrasi pembayaran",
+            "status": "open",
+            "pic": "",
+            "deadline": "",
+            "blocker": "Menunggu akun sandbox",
+            "dependency": "Persetujuan klien",
+            "citation": "tasks:1"
+          },
+          {
+            "title": "Landing page",
+            "status": "done",
+            "pic": "Andi",
+            "deadline": "2026-11-02",
+            "blocker": "",
+            "dependency": "",
+            "citation": "tasks:2"
+          }
+        ],
+        "missing": [
+          {
+            "task": "Integrasi pembayaran",
+            "field": "pic",
+            "citation": "tasks:1"
+          },
+          {
+            "task": "Integrasi pembayaran",
+            "field": "deadline",
+            "citation": "tasks:1"
+          }
+        ],
+        "conflicts": [
+          {
+            "field": "peluncuran",
+            "sources": [
+              {
+                "value": "8 November 2026",
+                "citation": "chat:1",
+                "source": "chat",
+                "version": 1,
+                "title": "Chat pembaruan",
+                "line": 1,
+                "text": "Peluncuran: 8 November 2026",
+                "effective": "2026-11-01"
+              },
+              {
+                "value": "6 November 2026",
+                "citation": "doc:2",
+                "source": "doc",
+                "version": 1,
+                "title": "Catatan proyek",
+                "line": 2,
+                "text": "Peluncuran: 6 November 2026",
+                "effective": "2026-10-29"
+              }
+            ],
+            "decision": "Perlu klarifikasi pemilik; tanggal terbaru saja tidak membuktikan otoritas."
+          }
+        ],
+        "warnings": [
+          {
+            "citation": "inject:1",
+            "reason": "Pola instruksi tersisip dikarantina; bukan deteksi universal."
+          }
+        ],
+        "recommendation": "Konfirmasikan temuan yang belum lengkap sebelum menerima handover."
+      }
+    },
+    {
+      "actor": "andi",
+      "operation": "plan",
+      "input": {
+        "action": "review",
+        "payload": {
+          "brief": "94df514e992ecae5"
+        }
+      },
+      "exit": 0,
+      "output": {
+        "plan": "4bd0dcabb9eda700",
+        "action": "review",
+        "preview": {
+          "brief": "94df514e992ecae5"
+        },
+        "revision": 2,
+        "status": "Pending",
+        "next": "Operator meninjau detail lalu menyetujui melalui approve.py; bridge tidak dapat approve."
+      }
+    },
+    {
+      "actor": "SIMULATED_OPERATOR",
+      "operation": "approve",
+      "plan": "4bd0dcabb9eda700",
+      "output": {
+        "brief": "94df514e992ecae5",
+        "status": "Ready for Acceptance"
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "get_brief",
+      "input": {
+        "id": "94df514e992ecae5"
+      },
+      "exit": 0,
+      "output": {
+        "id": "94df514e992ecae5",
+        "status": "Ready for Acceptance",
+        "revision": 2,
+        "evidence": [
+          {
+            "citation": "125a83a8be65:1",
+            "source": "125a83a8be65",
+            "version": 1,
+            "title": "Tasks CSV",
+            "line": 1,
+            "text": "TASK|Dokumentasi deployment|open|Budi|2026-11-05|Menunggu akses sandbox|Persetujuan manajer",
+            "effective": ""
+          },
+          {
+            "citation": "chat:1",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 1,
+            "text": "Peluncuran: 8 November 2026",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "chat:2",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 2,
+            "text": "Hambatan: Peluncuran tertunda karena foto produk belum dikirim klien.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "chat:3",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 3,
+            "text": "Keputusan: Gunakan katalog statis untuk demo.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "doc:1",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 1,
+            "text": "Tujuan: Membangun website toko.",
+            "effective": "2026-10-29"
+          },
+          {
+            "citation": "doc:2",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 2,
+            "text": "Peluncuran: 6 November 2026",
+            "effective": "2026-10-29"
+          },
+          {
+            "citation": "doc:3",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 3,
+            "text": "Kontak: Andi, pemilik proyek.",
+            "effective": "2026-10-29"
+          },
+          {
+            "citation": "inject:2",
+            "source": "inject",
+            "version": 1,
+            "title": "Catatan tambahan",
+            "line": 2,
+            "text": "Catatan: Demo menggunakan data sintetis.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "tasks:1",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 1,
+            "text": "TASK|Integrasi pembayaran|open|||Menunggu akun sandbox|Persetujuan klien",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "tasks:2",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 2,
+            "text": "TASK|Landing page|done|Andi|2026-11-02||",
+            "effective": "2026-11-01"
+          }
+        ],
+        "tasks": [
+          {
+            "title": "Dokumentasi deployment",
+            "status": "open",
+            "pic": "Budi",
+            "deadline": "2026-11-05",
+            "blocker": "Menunggu akses sandbox",
+            "dependency": "Persetujuan manajer",
+            "citation": "125a83a8be65:1"
+          },
+          {
+            "title": "Integrasi pembayaran",
+            "status": "open",
+            "pic": "",
+            "deadline": "",
+            "blocker": "Menunggu akun sandbox",
+            "dependency": "Persetujuan klien",
+            "citation": "tasks:1"
+          },
+          {
+            "title": "Landing page",
+            "status": "done",
+            "pic": "Andi",
+            "deadline": "2026-11-02",
+            "blocker": "",
+            "dependency": "",
+            "citation": "tasks:2"
+          }
+        ],
+        "missing": [
+          {
+            "task": "Integrasi pembayaran",
+            "field": "pic",
+            "citation": "tasks:1"
+          },
+          {
+            "task": "Integrasi pembayaran",
+            "field": "deadline",
+            "citation": "tasks:1"
+          }
+        ],
+        "conflicts": [
+          {
+            "field": "peluncuran",
+            "sources": [
+              {
+                "value": "8 November 2026",
+                "citation": "chat:1",
+                "source": "chat",
+                "version": 1,
+                "title": "Chat pembaruan",
+                "line": 1,
+                "text": "Peluncuran: 8 November 2026",
+                "effective": "2026-11-01"
+              },
+              {
+                "value": "6 November 2026",
+                "citation": "doc:2",
+                "source": "doc",
+                "version": 1,
+                "title": "Catatan proyek",
+                "line": 2,
+                "text": "Peluncuran: 6 November 2026",
+                "effective": "2026-10-29"
+              }
+            ],
+            "decision": "Perlu klarifikasi pemilik; tanggal terbaru saja tidak membuktikan otoritas."
+          }
+        ],
+        "warnings": [
+          {
+            "citation": "inject:1",
+            "reason": "Pola instruksi tersisip dikarantina; bukan deteksi universal."
+          }
+        ],
+        "recommendation": "Konfirmasikan temuan yang belum lengkap sebelum menerima handover."
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "plan",
+      "input": {
+        "action": "accept",
+        "payload": {
+          "brief": "94df514e992ecae5"
+        }
+      },
+      "exit": 0,
+      "output": {
+        "plan": "57401b8f3962f379",
+        "action": "accept",
+        "preview": {
+          "brief": "94df514e992ecae5"
+        },
+        "revision": 2,
+        "status": "Pending",
+        "next": "Operator meninjau detail lalu menyetujui melalui approve.py; bridge tidak dapat approve."
+      }
+    },
+    {
+      "actor": "SIMULATED_OPERATOR",
+      "operation": "approve",
+      "plan": "57401b8f3962f379",
+      "output": {
+        "brief": "94df514e992ecae5",
+        "status": "Accepted"
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "workspaces",
+      "input": {},
+      "exit": 0,
+      "output": [
+        {
+          "id": "demo",
+          "name": "Website Toko — sintetis",
+          "giver": "andi",
+          "receiver": "budi",
+          "revision": 2,
+          "status": "Accepted"
+        }
+      ]
+    },
+    {
+      "actor": "budi",
+      "operation": "audit",
+      "input": {},
+      "exit": 0,
+      "output": [
+        {
+          "id": 8,
+          "at": "2026-11-01T15:17:31.223174+00:00",
+          "action": "approved",
+          "body": "{\"plan\": \"57401b8f3962f379\", \"action\": \"accept\", \"details\": {\"brief\": \"94df514e992ecae5\", \"status\": \"Accepted\"}, \"approval_channel\": \"operator terminal\"}"
+        }
+      ]
+    },
+    {
+      "actor": "andi",
+      "operation": "plan",
+      "input": {
+        "action": "acl",
+        "payload": {
+          "source": "chat",
+          "users": [
+            "andi"
+          ]
+        }
+      },
+      "exit": 0,
+      "output": {
+        "plan": "db31a251d391b8b1",
+        "action": "acl",
+        "preview": {
+          "source": "chat",
+          "users": [
+            "andi"
+          ]
+        },
+        "revision": 2,
+        "status": "Pending",
+        "next": "Operator meninjau detail lalu menyetujui melalui approve.py; bridge tidak dapat approve."
+      }
+    },
+    {
+      "actor": "SIMULATED_OPERATOR",
+      "operation": "approve",
+      "plan": "db31a251d391b8b1",
+      "output": {
+        "updated": true
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "cite",
+      "input": {
+        "citation": "chat:2"
+      },
+      "exit": 0,
+      "output": {
+        "message": "Informasi belum tersedia untuk pertanyaan ini."
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "get_brief",
+      "input": {
+        "id": "94df514e992ecae5"
+      },
+      "exit": 1,
+      "output": {
+        "error": "Versi tidak berlaku; buat brief baru."
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "audit",
+      "input": {},
+      "exit": 0,
+      "output": []
+    }
+  ]
+}

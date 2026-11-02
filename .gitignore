@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.sqlite*
+operator-keys.json
+.env*
+.runtime/

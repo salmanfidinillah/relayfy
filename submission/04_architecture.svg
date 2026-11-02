@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="720" viewBox="0 0 920 720">
+<rect width="920" height="720" fill="#f6f8fc"/>
+<style>text{font-family:Arial,sans-serif;fill:#16283e}.title{font-size:28px;font-weight:bold}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.note{font-size:14px}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6" fill="#49778f"/></marker></defs>
+<text class="title" x="60" y="52">Relayfy — arsitektur prototipe lokal</text>
+<text class="body" x="60" y="80">Challenge A · data sintetis · tanpa deployment</text>
+<rect x="60" y="105" width="310" height="100" rx="14" fill="white" stroke="#b7c8da"/>
+<text x="77" y="134" class="head">WorkBuddy / satu persona</text>
+<text x="77" y="159" class="body">AI + kontrak runtime</text>
+<text x="77" y="182" class="note">Percakapan aktual belum diuji</text>
+<rect x="60" y="270" width="310" height="90" rx="14" fill="white" stroke="#b7c8da"/>
+<text x="77" y="299" class="head">bridge.py</text>
+<text x="77" y="324" class="body">Satu token; hanya HTTP</text>
+<text x="77" y="347" class="note">Tidak memiliki endpoint approve</text>
+<rect x="460" y="270" width="390" height="110" rx="14" fill="white" stroke="#b7c8da"/>
+<text x="477" y="299" class="head">Policy &amp; evidence service</text>
+<text x="477" y="324" class="body">Identitas → membership → ACL</text>
+<text x="477" y="347" class="note">Pencarian, versi, kutipan, audit</text>
+<rect x="460" y="480" width="390" height="100" rx="14" fill="white" stroke="#b7c8da"/>
+<text x="477" y="509" class="head">SQLite privat operator</text>
+<text x="477" y="534" class="body">Sumber, ACL, brief, plans, log</text>
+<text x="477" y="557" class="note">State di luar workspace agent</text>
+<rect x="60" y="480" width="310" height="100" rx="14" fill="white" stroke="#b7c8da"/>
+<text x="77" y="509" class="head">Manusia / approve.py</text>
+<text x="77" y="534" class="body">Periksa plan + ketik SETUJU</text>
+<text x="77" y="557" class="note">Validasi ulang versi dan izin</text>
+<path d="M215 205 V266" fill="none" stroke="#49778f" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M370 315 H455" fill="none" stroke="#49778f" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M655 380 V476" fill="none" stroke="#49778f" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M370 528 H455" fill="none" stroke="#49778f" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text class="note" x="390" y="299">API</text>
+<text class="note" x="677" y="427">SQL</text>
+<text class="note" x="60" y="630">Batas yang diuji: API. Folder terpisah bukan sandbox.</text>
+<text class="note" x="60" y="656">Akun OS/container terpisah diperlukan untuk mencegah akses file langsung.</text>
+<text class="note" x="60" y="682">Pencabutan akses tidak dapat menghapus konteks yang sudah dilihat model.</text>
+</svg>
