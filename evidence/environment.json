@@ -1,0 +1,24 @@
+{
+  "recorded_at": "2026-11-02T03:38:51.579535+00:00",
+  "os": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.14",
+  "python_impl": "CPython",
+  "cwd": "C:\\Users\\acer\\WorkBuddy AI\\2026-11-01-21-20-25\\relayfy-compare",
+  "proxy_env_present": [
+    "HTTPS_PROXY",
+    "HTTP_PROXY"
+  ],
+  "note": "Nilai proxy tidak dicatat. bridge.py memakai ProxyHandler({}) agar loopback tidak lewat proxy.",
+  "tests": {
+    "unit": "32/32",
+    "bridge": "7/7",
+    "demo_events": 21
+  },
+  "not_run": [
+    "WorkBuddy conversation W01-W10",
+    "human approval W07-W08",
+    "revocation W09",
+    "filesystem isolation W10",
+    "official dataset"
+  ]
+}
