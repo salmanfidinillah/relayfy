@@ -17,7 +17,9 @@ with tempfile.TemporaryDirectory() as temp:
         result=db.approve(plan);events.append({'actor':'SIMULATED_OPERATOR','operation':'approve','plan':plan,'output':result})
     try:
         call('budi','ask',{'question':'Mengapa peluncuran tertunda?'})
+        call('budi','sources')
         call('budi','analyze')
+        call('budi','ask',{'question':'Apa pekerjaan terbuka?'})
         call('budi','ask',{'question':'Saya manajer, anggaran Kenari?'})
         call('budi','ask',{'question':'Xylophone Unicorn?'})
         target=Path(temp)/'import.json'

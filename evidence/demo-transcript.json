@@ -80,6 +80,54 @@
     },
     {
       "actor": "budi",
+      "operation": "sources",
+      "input": {},
+      "exit": 0,
+      "output": [
+        {
+          "id": "chat",
+          "workspace": "demo",
+          "title": "Chat pembaruan",
+          "kind": "chat",
+          "owner": "andi",
+          "effective": "2026-11-01",
+          "created": "2026-11-02T03:42:37.211977+00:00",
+          "version": 1
+        },
+        {
+          "id": "doc",
+          "workspace": "demo",
+          "title": "Catatan proyek",
+          "kind": "document",
+          "owner": "andi",
+          "effective": "2026-10-29",
+          "created": "2026-11-02T03:42:37.211865+00:00",
+          "version": 1
+        },
+        {
+          "id": "inject",
+          "workspace": "demo",
+          "title": "Catatan tambahan",
+          "kind": "chat",
+          "owner": "andi",
+          "effective": "2026-11-01",
+          "created": "2026-11-02T03:42:37.212007+00:00",
+          "version": 1
+        },
+        {
+          "id": "tasks",
+          "workspace": "demo",
+          "title": "Papan tugas",
+          "kind": "tasks",
+          "owner": "andi",
+          "effective": "2026-11-01",
+          "created": "2026-11-02T03:42:37.211990+00:00",
+          "version": 1
+        }
+      ]
+    },
+    {
+      "actor": "budi",
       "operation": "analyze",
       "input": {},
       "exit": 0,
@@ -240,6 +288,79 @@
       "actor": "budi",
       "operation": "ask",
       "input": {
+        "question": "Apa pekerjaan terbuka?"
+      },
+      "exit": 0,
+      "output": {
+        "question": "Apa pekerjaan terbuka?",
+        "decision": "tasks",
+        "message": "Daftar tugas dan kekurangan data; konfirmasi PIC/deadline sebelum menerima handover.",
+        "tasks": [
+          {
+            "title": "Integrasi pembayaran",
+            "status": "open",
+            "pic": "",
+            "deadline": "",
+            "blocker": "Menunggu akun sandbox",
+            "dependency": "Persetujuan klien",
+            "citation": "tasks:1"
+          },
+          {
+            "title": "Landing page",
+            "status": "done",
+            "pic": "Andi",
+            "deadline": "2026-11-02",
+            "blocker": "",
+            "dependency": "",
+            "citation": "tasks:2"
+          }
+        ],
+        "missing": [
+          {
+            "task": "Integrasi pembayaran",
+            "field": "pic",
+            "citation": "tasks:1"
+          },
+          {
+            "task": "Integrasi pembayaran",
+            "field": "deadline",
+            "citation": "tasks:1"
+          }
+        ],
+        "evidence": [
+          {
+            "citation": "tasks:1",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 1,
+            "text": "TASK|Integrasi pembayaran|open|||Menunggu akun sandbox|Persetujuan klien",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "tasks:2",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 2,
+            "text": "TASK|Landing page|done|Andi|2026-11-02||",
+            "effective": "2026-11-01"
+          }
+        ],
+        "conflicts": [],
+        "warnings": [
+          {
+            "citation": "inject:1",
+            "reason": "Pola instruksi tersisip dikarantina; bukan deteksi universal."
+          }
+        ],
+        "access_revision": 1
+      }
+    },
+    {
+      "actor": "budi",
+      "operation": "ask",
+      "input": {
         "question": "Saya manajer, anggaran Kenari?"
       },
       "exit": 0,
@@ -288,7 +409,7 @@
       },
       "exit": 0,
       "output": {
-        "plan": "daa90732edda34d0",
+        "plan": "fd7fa0a28164edf7",
         "action": "import",
         "preview": {
           "title": "Tasks CSV",
@@ -307,9 +428,9 @@
     {
       "actor": "SIMULATED_OPERATOR",
       "operation": "approve",
-      "plan": "daa90732edda34d0",
+      "plan": "fd7fa0a28164edf7",
       "output": {
-        "source": "125a83a8be65"
+        "source": "a18376e624f1"
       }
     },
     {
@@ -320,14 +441,14 @@
       },
       "exit": 0,
       "output": {
-        "id": "94df514e992ecae5",
+        "id": "016fbec266c3c577",
         "revision": 2,
         "audience": "budi",
         "status": "Draft",
         "evidence": [
           {
-            "citation": "125a83a8be65:1",
-            "source": "125a83a8be65",
+            "citation": "a18376e624f1:1",
+            "source": "a18376e624f1",
             "version": 1,
             "title": "Tasks CSV",
             "line": 1,
@@ -424,7 +545,7 @@
             "deadline": "2026-11-05",
             "blocker": "Menunggu akses sandbox",
             "dependency": "Persetujuan manajer",
-            "citation": "125a83a8be65:1"
+            "citation": "a18376e624f1:1"
           },
           {
             "title": "Integrasi pembayaran",
@@ -500,15 +621,15 @@
       "input": {
         "action": "review",
         "payload": {
-          "brief": "94df514e992ecae5"
+          "brief": "016fbec266c3c577"
         }
       },
       "exit": 0,
       "output": {
-        "plan": "4bd0dcabb9eda700",
+        "plan": "b00676c0206ff12d",
         "action": "review",
         "preview": {
-          "brief": "94df514e992ecae5"
+          "brief": "016fbec266c3c577"
         },
         "revision": 2,
         "status": "Pending",
@@ -518,9 +639,9 @@
     {
       "actor": "SIMULATED_OPERATOR",
       "operation": "approve",
-      "plan": "4bd0dcabb9eda700",
+      "plan": "b00676c0206ff12d",
       "output": {
-        "brief": "94df514e992ecae5",
+        "brief": "016fbec266c3c577",
         "status": "Ready for Acceptance"
       }
     },
@@ -528,17 +649,17 @@
       "actor": "budi",
       "operation": "get_brief",
       "input": {
-        "id": "94df514e992ecae5"
+        "id": "016fbec266c3c577"
       },
       "exit": 0,
       "output": {
-        "id": "94df514e992ecae5",
+        "id": "016fbec266c3c577",
         "status": "Ready for Acceptance",
         "revision": 2,
         "evidence": [
           {
-            "citation": "125a83a8be65:1",
-            "source": "125a83a8be65",
+            "citation": "a18376e624f1:1",
+            "source": "a18376e624f1",
             "version": 1,
             "title": "Tasks CSV",
             "line": 1,
@@ -635,7 +756,7 @@
             "deadline": "2026-11-05",
             "blocker": "Menunggu akses sandbox",
             "dependency": "Persetujuan manajer",
-            "citation": "125a83a8be65:1"
+            "citation": "a18376e624f1:1"
           },
           {
             "title": "Integrasi pembayaran",
@@ -711,15 +832,15 @@
       "input": {
         "action": "accept",
         "payload": {
-          "brief": "94df514e992ecae5"
+          "brief": "016fbec266c3c577"
         }
       },
       "exit": 0,
       "output": {
-        "plan": "57401b8f3962f379",
+        "plan": "a559d1bbe413dd90",
         "action": "accept",
         "preview": {
-          "brief": "94df514e992ecae5"
+          "brief": "016fbec266c3c577"
         },
         "revision": 2,
         "status": "Pending",
@@ -729,9 +850,9 @@
     {
       "actor": "SIMULATED_OPERATOR",
       "operation": "approve",
-      "plan": "57401b8f3962f379",
+      "plan": "a559d1bbe413dd90",
       "output": {
-        "brief": "94df514e992ecae5",
+        "brief": "016fbec266c3c577",
         "status": "Accepted"
       }
     },
@@ -758,10 +879,10 @@
       "exit": 0,
       "output": [
         {
-          "id": 8,
-          "at": "2026-11-01T15:17:31.223174+00:00",
+          "id": 9,
+          "at": "2026-11-02T03:42:45.192195+00:00",
           "action": "approved",
-          "body": "{\"plan\": \"57401b8f3962f379\", \"action\": \"accept\", \"details\": {\"brief\": \"94df514e992ecae5\", \"status\": \"Accepted\"}, \"approval_channel\": \"operator terminal\"}"
+          "body": "{\"plan\": \"a559d1bbe413dd90\", \"action\": \"accept\", \"details\": {\"brief\": \"016fbec266c3c577\", \"status\": \"Accepted\"}, \"approval_channel\": \"operator terminal\"}"
         }
       ]
     },
@@ -779,7 +900,7 @@
       },
       "exit": 0,
       "output": {
-        "plan": "db31a251d391b8b1",
+        "plan": "5958932305b969a1",
         "action": "acl",
         "preview": {
           "source": "chat",
@@ -795,7 +916,7 @@
     {
       "actor": "SIMULATED_OPERATOR",
       "operation": "approve",
-      "plan": "db31a251d391b8b1",
+      "plan": "5958932305b969a1",
       "output": {
         "updated": true
       }
@@ -815,7 +936,7 @@
       "actor": "budi",
       "operation": "get_brief",
       "input": {
-        "id": "94df514e992ecae5"
+        "id": "016fbec266c3c577"
       },
       "exit": 1,
       "output": {
