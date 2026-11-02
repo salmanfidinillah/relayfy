@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-02T03:42:28.818378+00:00",
+  "run_at": "2026-11-02T03:46:30.424924+00:00",
   "scope": "Real bridge.py -> HTTP -> local service, synthetic demo data. NOT a WorkBuddy conversation and NOT official committee tests.",
   "service_url": "http://127.0.0.1:8765",
   "cases": [
