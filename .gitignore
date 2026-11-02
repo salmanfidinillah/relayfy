@@ -2,5 +2,7 @@ __pycache__/
 *.pyc
 *.sqlite*
 operator-keys.json
+active-token
 .env*
 .runtime/
+draft-import.json
