@@ -1,0 +1,8 @@
+{
+  "workspace": "demo",
+  "action": "clarify",
+  "payload": {
+    "brief": "GANTI_DENGAN_ID_BRIEF",
+    "question": "Siapa PIC integrasi pembayaran?"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "workspace": "demo",
+  "action": "accept",
+  "payload": {
+    "brief": "GANTI_DENGAN_ID_BRIEF"
+  }
+}
