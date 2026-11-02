@@ -61,6 +61,20 @@ class RelayfyTests(unittest.TestCase):
         with self.assertRaises(Fault):self.s.identity('forged')
     def test_27_cross_workspace_access(self):
         with self.assertRaises(Fault):self.call('sources',{'workspace':'missing'})
+    def test_29_open_tasks_intent(self):
+        r=self.call('ask',{'question':'Apa pekerjaan terbuka?'})
+        self.assertEqual(r['decision'],'tasks');self.assertEqual(len(r['tasks']),2)
+        self.assertEqual({g['field'] for g in r['missing']},{'pic','deadline'})
+    def test_30_task_intent_no_restricted_source(self):
+        r=self.call('ask',{'question':'Tugas apa saja dan berapa anggaran?'})
+        self.assertNotIn('secret',{e['source'] for e in r['evidence']})
+    def test_31_status_intent_surfaces_conflict(self):
+        r=self.call('ask',{'question':'Bagaimana status proyek?'})
+        self.assertEqual(r['decision'],'evidence');self.assertTrue(r['evidence'])
+        self.assertEqual([c['field'] for c in r['conflicts']],['peluncuran'])
+    def test_32_task_intent_empty_workspace(self):
+        ws=self.call('create',{'name':'Kosong','receiver':'budi'},'andi')['id']
+        self.assertEqual(self.call('ask',{'question':'Apa pekerjaan terbuka?','workspace':ws})['message'],UNKNOWN)
     def test_28_http_boundary(self):
         server=Server(('127.0.0.1',0),str(self.path));thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
         base='http://127.0.0.1:'+str(server.server_port)

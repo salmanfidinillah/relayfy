@@ -15,6 +15,10 @@ def words(s):
     return {aliases.get(x,x) for x in re.findall(r'\w+',s.lower()) if x not in stop}
 def suspicious(s):
     return bool(re.search(r'abaikan.*instruksi|ignore.*instructions|AI\s*:|system\s*:|kirim.*password|forward.*secret', s, re.I))
+# Deterministic intent routing. No model calls; documented in README.
+TASK_INTENT=re.compile(r'\b(tugas|pekerjaan|kerjaan|task|todo|to-?do|belum selesai|terbuka|open|pic|penanggung jawab|deadline|tenggat|hambatan|blocker|ketergantungan|dependency)\b',re.I)
+MISSING_INTENT=re.compile(r'\b(klarifikasi|belum lengkap|kurang lengkap|kelengkapan|missing)\b',re.I)
+STATUS_INTENT=re.compile(r'\b(status|posisi|terakhir|progress|kemajuan|ringkasan|summary|overview)\b',re.I)
 
 class Store:
     def __init__(self,path):
@@ -104,8 +108,24 @@ class Store:
                 terms=words(q)
                 ranked=sorted([(len(terms & words(e['text'])),e) for e in result['evidence']],key=lambda x:x[0],reverse=True)
                 hits=[e for score,e in ranked if score>0][:8]
-                # No free-form factual generation: WorkBuddy receives cited quotations.
-                result={'question':q,'decision':'evidence' if hits else 'unknown','message':'Kutipan relevan; periksa kecukupan sebelum menyimpulkan.' if hits else UNKNOWN,'evidence':hits,'conflicts':[c for c in result['conflicts'] if any(e['citation'] in {h['citation'] for h in hits} for e in c['sources'])],'warnings':result['warnings'] if hits else [],'access_revision':ws['revision']}
+                conflicts=[c for c in result['conflicts'] if any(e['citation'] in {h['citation'] for h in hits} for e in c['sources'])]
+                # Intent routing keeps common handover questions answerable without semantic search.
+                if TASK_INTENT.search(q) or MISSING_INTENT.search(q):
+                    cites={t['citation'] for t in result['tasks']}
+                    result={'question':q,
+                            'decision':'missing' if MISSING_INTENT.search(q) else 'tasks',
+                            'message':'Daftar tugas dan kekurangan data; konfirmasi PIC/deadline sebelum menerima handover.' if result['tasks'] else UNKNOWN,
+                            'tasks':result['tasks'],'missing':result['missing'],
+                            'evidence':[e for e in result['evidence'] if e['citation'] in cites][:12],
+                            'conflicts':[],'warnings':result['warnings'],'access_revision':ws['revision']}
+                elif STATUS_INTENT.search(q):
+                    facts=[e for e in result['evidence'] if not e['text'].startswith('TASK|')][:12]
+                    result={'question':q,'decision':'evidence' if facts else 'unknown',
+                            'message':'Baris fakta bersumber; periksa konflik sebelum menyimpulkan.' if facts else UNKNOWN,
+                            'evidence':facts,'conflicts':result['conflicts'],'warnings':result['warnings'],'access_revision':ws['revision']}
+                else:
+                    # No free-form factual generation: WorkBuddy receives cited quotations.
+                    result={'question':q,'decision':'evidence' if hits else 'unknown','message':'Kutipan relevan; periksa kecukupan sebelum menyimpulkan.' if hits else UNKNOWN,'evidence':hits,'conflicts':conflicts,'warnings':result['warnings'] if hits else [],'access_revision':ws['revision']}
             self.log(u,w,op,result);return result
         if op=='brief':
             audience=p.get('audience',u)
