@@ -6,7 +6,7 @@ AI Handover Assistant untuk Challenge A. Paket ini dibuat di ChatGPT/Codex sebag
 
 | Lapisan | Hasil | Bukti |
 |---|---|---|
-| Uji otomatis inti (deterministik) | **32/32 lulus** | `evidence/test-results.json` |
+| Uji otomatis inti (deterministik) | **33/33 lulus** | `evidence/test-results.json` |
 | Demo lokal end-to-end (HTTP + bridge, approval disimulasikan) | **21 event** | `evidence/demo-transcript.json` |
 | Kasus bridge W01–W06 + struktur W10 | **7/7 lulus** | `evidence/bridge-cases.json` |
 | Percakapan WorkBuddy (W01–W10) | **belum dijalankan** | `tests/WORKBUDDY_CASES.md` |
@@ -51,6 +51,7 @@ python workbuddy/status.py
 
 - **Proxy**: laptop ini menyalakan `HTTP_PROXY`/`HTTPS_PROXY`. `bridge.py` sekarang memakai `ProxyHandler({})` agar trafik loopback tidak pernah lewat proxy; tanpa itu, request ke `127.0.0.1` bisa gagal dengan pesan `upstream connect failed`.
 - **Path state harus sama persis** di `start.py`, `session.py`, dan `approve.py`. Di Git Bash, gunakan path Windows (`C:/Users/.../relayfy-fresh`), bukan `/tmp/...`, karena variabel environment tidak ikut dikonversi.
+- **Stabilitas HTTP**: server kini membaca body request sebelum menolak. Sebelumnya, menolak dengan body yang belum dibaca membuat Windows me-reset koneksi sehingga tes sesekali gagal `RemoteDisconnected`. Sesudah perbaikan, 33/33 lulus pada 10 kali eksekusi berturut-turut; regresi dikunci di `test_33`.
 - **Uji state baru** (port 8799, state kosong) sudah dilakukan: seeding, `session.py`, `status.py`, `ask`, `plan`, dan penolakan `approve.py` saat input bukan `SETUJU` semuanya berjalan; sumber tidak berubah setelah penolakan.
 
 ## Demo satu perintah tanpa WorkBuddy
@@ -117,7 +118,7 @@ Ini bukan pencarian semantik: pertanyaan yang tidak memuat kata kunci maupun pol
 ## Testing
 
 ```powershell
-python tests/run_tests.py     # 32 tes inti, menulis submission/03_test_results.md
+python tests/run_tests.py     # 33 tes inti, menulis submission/03_test_results.md
 python tests/bridge_cases.py  # 7 kasus bridge ke layanan yang sedang berjalan
 ```
 

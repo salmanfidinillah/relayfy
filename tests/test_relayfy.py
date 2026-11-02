@@ -88,5 +88,14 @@ class RelayfyTests(unittest.TestCase):
                 with self.assertRaises(urllib.error.HTTPError) as e:req(op,token,origin)
                 self.assertEqual(e.exception.code,code)
         finally:server.shutdown();server.server_close();thread.join()
+    def test_33_oversized_body_returns_413(self):
+        # Regression: rejecting before draining the body made Windows reset the
+        # connection, so the client saw RemoteDisconnected instead of 413.
+        server=Server(('127.0.0.1',0),str(self.path));thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+        try:
+            req=urllib.request.Request('http://127.0.0.1:'+str(server.server_port)+'/api/sources',data=b'x'*300000,headers={'Authorization':'Bearer '+self.keys['budi'],'Content-Type':'application/json'})
+            with self.assertRaises(urllib.error.HTTPError) as e:urllib.request.urlopen(req,timeout=5)
+            self.assertEqual(e.exception.code,413)
+        finally:server.shutdown();server.server_close();thread.join()
 
 if __name__=='__main__':unittest.main()

@@ -2,9 +2,9 @@
 
 Synthetic deterministic core + local HTTP; NOT actual WorkBuddy/LLM or official tests
 
-Run UTC: 2026-11-02T03:42:31.658290+00:00
+Run UTC: 2026-11-02T03:45:52.886499+00:00
 
-32/32 lulus.
+33/33 lulus.
 
 | Kasus | Hasil |
 |---|---|
@@ -40,6 +40,7 @@ Run UTC: 2026-11-02T03:42:31.658290+00:00
 | test_30_task_intent_no_restricted_source | PASS |
 | test_31_status_intent_surfaces_conflict | PASS |
 | test_32_task_intent_empty_workspace | PASS |
+| test_33_oversized_body_returns_413 | PASS |
 
 ## Lapisan bridge (HTTP client nyata)
 

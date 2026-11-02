@@ -1,6 +1,6 @@
 {
   "package": "relayfy-comparison",
-  "generated_at": "2026-11-02T03:43:03.197708+00:00",
+  "generated_at": "2026-11-02T03:45:53.585662+00:00",
   "note": "Hash dihitung ulang setelah perbaikan 2026-11-02. Tidak memuat state operator atau token.",
   "files": [
     {
@@ -17,7 +17,7 @@
     },
     {
       "path": "CHECKLIST.md",
-      "sha256": "790f4f576a8304af60efe275f62e5103d5b355d1811ce1c29247a8472aa39640"
+      "sha256": "b363fd82bd67adbadc497e491ffe56ba171b6f2f42a0009ee2cc5f3603328474"
     },
     {
       "path": "demo.py",
@@ -37,7 +37,7 @@
     },
     {
       "path": "evidence/test-results.json",
-      "sha256": "1a6eb0ea2eef59a01d33d9f28cf557b587278e8a8ca8f018cb7cf320cfe39a05"
+      "sha256": "d7b2a58b36e852a6cbcefda15114ab525854b95405316454486e8c1dd8643656"
     },
     {
       "path": "examples/query.json",
@@ -57,7 +57,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "f603ec472148f3df2928dbb8cc1d475445127b4a27e8af048d267a052ad56e64"
+      "sha256": "87519fd57cd2e7aa716f414ab8d24cf8298ba4b509243b0717b70ed2ff9cf2ae"
     },
     {
       "path": "service/core.py",
@@ -65,7 +65,7 @@
     },
     {
       "path": "service/server.py",
-      "sha256": "206cdf55a35b81e672c8b67cb5cf09d161168561c42b93b3a1c5b08b6f843254"
+      "sha256": "c4c9580e350163308483f0d4c2851cb6bfedd8a7fed9e8a1e607074d8d02a1df"
     },
     {
       "path": "session.py",
@@ -77,23 +77,23 @@
     },
     {
       "path": "submission/00_index.md",
-      "sha256": "21148e56e9e3253c3799c6779dbb6022474189d4f7b57086d5ab642e9c3f6768"
+      "sha256": "ed91fa5d500ecf710aa3888a17abd806968a39ad92213435c8309732dbb2dcd3"
     },
     {
       "path": "submission/01_description.md",
-      "sha256": "e66fa670818ebf72edec2cfce8ff5a11517de69a595d7bf16c5075ea09e2d5a3"
+      "sha256": "a35004be7aa83e83a7a1aabbf2934d4516329073bb3c6a5b1dc61fb1b5dcb126"
     },
     {
       "path": "submission/02_accountability_sheet.md",
-      "sha256": "bb63ca604141dc4ff35e9ba750f2d0493adac2b13ad441ebd4aedada871e97cc"
+      "sha256": "0cfd09017a209c7a644fff597ff224629abff98024fe4cd363b0a8c8ac08988b"
     },
     {
       "path": "submission/03_test_results.md",
-      "sha256": "83ae11e3b7627c51ac209a96806a38cca1447d2bc8f5ea94bc625bd7d010813e"
+      "sha256": "03583966f1d3734f5af8bdcf5529a11f8adb3421544aefd92212f2bf8523ef96"
     },
     {
       "path": "submission/04_architecture.md",
-      "sha256": "dbbc012e5ba4c0849dfcc6074d44cd4f18d3edbee5c2c4dc8e07b47fd4687d25"
+      "sha256": "735cf9e4b9096302067e9a3feeb10edf2e85618d2372afb12be884e305411a53"
     },
     {
       "path": "submission/04_architecture.svg",
@@ -101,15 +101,15 @@
     },
     {
       "path": "submission/05_demo_video_script.md",
-      "sha256": "cb1cc46b42cb3ff0ca6c622a08dceaafc14df0f9bd4f3c4691c47e4524c86ec4"
+      "sha256": "19b757f25247fb7a0e97fbd977e4b70ce4614ce6b73f285c5934d1ce583168ef"
     },
     {
       "path": "submission/06_product_sharing.md",
-      "sha256": "a3bcb17e24df81f99c4456970d67bc06d59beef8b2d3b6a0a79ec27b31e82c51"
+      "sha256": "68ca3b1c634836115713111a02eabf23e378ba18ab3807b6cc9a1d6b5eb33e5b"
     },
     {
       "path": "submission/07_submission_draft.md",
-      "sha256": "a39da353878d777a82cac8e8364a2245c71eef4a353e4d14ccc8a4fc298675fd"
+      "sha256": "316edc6bf0eebd61fa370be9abb733396fd152cb83238e9bfa3891b3d7dff909"
     },
     {
       "path": "submission/08_sources.md",
@@ -125,7 +125,7 @@
     },
     {
       "path": "tests/test_relayfy.py",
-      "sha256": "db70208ed0d8fb5dc93702478581545f458bfa5cab650f0713fff824cf6c99ad"
+      "sha256": "accde89bddb1e16532a23de1c12de7c725ea2f17713771ceeb263ef479758c5b"
     },
     {
       "path": "tests/WORKBUDDY_CASES.md",

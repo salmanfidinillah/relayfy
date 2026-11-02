@@ -8,7 +8,7 @@ Legenda: **Selesai** (terbukti di laptop ini) · **Sebagian** (ada bukti, cakupa
 |---|---|---|
 | Brief/handbook/playbook diperiksa | Selesai | PROJECT_BRIEF.md, submission/08_sources.md |
 | Struktur proyek & Python diperiksa | Selesai | Python 3.13.14, hanya stdlib; 31→37 file |
-| Uji otomatis inti | Selesai | 32/32 lulus — `evidence/test-results.json` |
+| Uji otomatis inti | Selesai | 33/33 lulus — `evidence/test-results.json` |
 | Demo lokal end-to-end | Selesai | 21 event — `evidence/demo-transcript.json` (approval disimulasikan harness) |
 | Koneksi bridge nyata (HTTP client) | Selesai | 7/7 kasus W — `evidence/bridge-cases.json` |
 | Workspace dan sumber manual | Selesai | `service/core.py`, `import_source.py` |

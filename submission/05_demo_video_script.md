@@ -24,7 +24,7 @@
 | 04:30–05:10 | Persona Andi (`python session.py --persona andi`, task baru): buat brief untuk Budi, lalu `plan` review. Agent berhenti. Di terminal operator jalankan `approve.py <ID>` dan **kamu** mengetik SETUJU. | Preview plan, revision, status `Ready for Acceptance` |
 | 05:10–05:50 | Persona Budi (task baru): `get_brief`, lalu `plan` accept; operator menyetujui. Tampilkan `audit`. | Status `Accepted`, entri audit berisi approval |
 | 05:50–06:20 | Opsional bila waktu cukup: cabut akses `chat` untuk Budi, lalu `cite chat:2` dan `get_brief` lama. | `unknown` dan “Versi tidak berlaku”; audit lama tidak tampil |
-| 06:20–06:30 | Refleksi: 32/32 tes inti, 7/7 kasus bridge, apa yang belum diuji, dan kontribusi WorkBuddy yang benar-benar terjadi. | Angka dari `evidence/`, bukan karangan |
+| 06:20–06:30 | Refleksi: 33/33 tes inti, 7/7 kasus bridge, apa yang belum diuji, dan kontribusi WorkBuddy yang benar-benar terjadi. | Angka dari `evidence/`, bukan karangan |
 
 ## Perintah yang dipakai (sudah diverifikasi)
 

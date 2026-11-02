@@ -9,7 +9,7 @@ Belum memeriksa kolom formulir terbaru dan belum mengirim apa pun.
 - Description: gunakan 01_description.md setelah memperbarui status runtime.
 - Architecture: 04_architecture.svg dan penjelasannya.
 - Accountability: 02_accountability_sheet.md.
-- Tests: 03_test_results.md — 32/32 tes inti, 7/7 kasus bridge, demo 21 event (approval disimulasikan). Percakapan WorkBuddy, screenshot, dan test resmi belum ada.
+- Tests: 03_test_results.md — 33/33 tes inti, 7/7 kasus bridge, demo 21 event (approval disimulasikan). Percakapan WorkBuddy, screenshot, dan test resmi belum ada.
 - Demo video URL: BELUM DIREKAM / BELUM ADA TAUTAN.
 - Source repository / exported workflow: paket lokal tersedia; URL repo belum dibuat/dipush.
 - Product sharing: 06_product_sharing.md, isi hasil penggunaan aktual.

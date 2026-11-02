@@ -1,8 +1,8 @@
 {
-  "run_at": "2026-11-02T03:42:31.658290+00:00",
+  "run_at": "2026-11-02T03:45:52.886499+00:00",
   "scope": "Synthetic deterministic core + local HTTP; NOT actual WorkBuddy/LLM or official tests",
-  "tests": 32,
-  "passed": 32,
+  "tests": 33,
+  "passed": 33,
   "results": [
     {
       "test": "test_relayfy.RelayfyTests.test_01_source_filter_before_search",
@@ -130,6 +130,10 @@
     },
     {
       "test": "test_relayfy.RelayfyTests.test_32_task_intent_empty_workspace",
+      "status": "PASS"
+    },
+    {
+      "test": "test_relayfy.RelayfyTests.test_33_oversized_body_returns_413",
       "status": "PASS"
     }
   ]

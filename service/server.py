@@ -13,12 +13,22 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         store=None
         try:
+            # Drain the body before any rejection: replying with unread request bytes
+            # makes Windows reset the connection and the client sees RemoteDisconnected.
+            length=int(self.headers.get('Content-Length','0'))
+            if length<1:raise Fault('Ukuran request tidak valid.',413)
+            if length>200000:
+                remaining=min(length,5000000)
+                while remaining>0:
+                    chunk=self.rfile.read(min(65536,remaining))
+                    if not chunk:break
+                    remaining-=len(chunk)
+                raise Fault('Ukuran request tidak valid.',413)
+            raw=self.rfile.read(length)
             if self.headers.get('Origin'):raise Fault('Browser origin tidak diizinkan.',403)
             host=self.headers.get('Host','').split(':')[0]
             if host not in ('127.0.0.1','localhost'):raise Fault('Host ditolak.',403)
-            length=int(self.headers.get('Content-Length','0'))
-            if length<1 or length>200000:raise Fault('Ukuran request tidak valid.',413)
-            request=json.loads(self.rfile.read(length))
+            request=json.loads(raw)
             if not isinstance(request,dict):raise Fault('JSON object diperlukan.')
             op=urlsplit(self.path).path.removeprefix('/api/')
             if not self.path.startswith('/api/') or op=='approve':raise Fault('Endpoint tidak tersedia.',404)

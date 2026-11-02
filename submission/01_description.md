@@ -16,7 +16,7 @@ Implementasi: Python standard library, SQLite, API HTTP loopback, client tool, d
 
 | Lapisan | Hasil | Bukti |
 |---|---|---|
-| Uji otomatis inti | 32/32 lulus | `evidence/test-results.json` |
+| Uji otomatis inti | 33/33 lulus | `evidence/test-results.json` |
 | Demo lokal end-to-end (approval disimulasikan) | 21 event | `evidence/demo-transcript.json` |
 | Kasus bridge W01–W06 + struktur W10 | 7/7 lulus | `evidence/bridge-cases.json` |
 | Percakapan WorkBuddy | belum dijalankan | `tests/WORKBUDDY_CASES.md` |
