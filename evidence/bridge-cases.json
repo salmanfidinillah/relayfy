@@ -1,0 +1,349 @@
+{
+  "run_at": "2026-11-02T03:42:28.818378+00:00",
+  "scope": "Real bridge.py -> HTTP -> local service, synthetic demo data. NOT a WorkBuddy conversation and NOT official committee tests.",
+  "service_url": "http://127.0.0.1:8765",
+  "cases": [
+    {
+      "id": "W01",
+      "persona": "budi",
+      "input": {
+        "question": "Mengapa peluncuran tertunda?"
+      },
+      "expectation": "decision=evidence; chat:2 quoted; mentions foto produk",
+      "pass": true,
+      "observed": {
+        "question": "Mengapa peluncuran tertunda?",
+        "decision": "evidence",
+        "message": "Kutipan relevan; periksa kecukupan sebelum menyimpulkan.",
+        "evidence": [
+          {
+            "citation": "chat:2",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 2,
+            "text": "Hambatan: Peluncuran tertunda karena foto produk belum dikirim klien.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "chat:1",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 1,
+            "text": "Peluncuran: 8 November 2026",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "doc:2",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 2,
+            "text": "Peluncuran: 6 November 2026",
+            "effective": "2026-10-29"
+          }
+        ],
+        "conflicts": [
+          {
+            "field": "peluncuran",
+            "sources": [
+              {
+                "value": "8 November 2026",
+                "citation": "chat:1",
+                "source": "chat",
+                "version": 1,
+                "title": "Chat pembaruan",
+                "line": 1,
+                "text": "Peluncuran: 8 November 2026",
+                "effective": "2026-11-01"
+              },
+              {
+                "value": "6 November 2026",
+                "citation": "doc:2",
+                "source": "doc",
+                "version": 1,
+                "title": "Catatan proyek",
+                "line": 2,
+                "text": "Peluncuran: 6 November 2026",
+                "effective": "2026-10-29"
+              }
+            ],
+            "decision": "Perlu klarifikasi pemilik; tanggal terbaru saja tidak membuktikan otoritas."
+          }
+        ],
+        "warnings": [
+          {
+            "citation": "inject:1",
+            "reason": "Pola instruksi tersisip dikarantina; bukan deteksi universal."
+          }
+        ],
+        "access_revision": 1
+      }
+    },
+    {
+      "id": "W02",
+      "persona": "budi",
+      "input": {
+        "question": "Kapan peluncuran?"
+      },
+      "expectation": "doc:2 and chat:1 both quoted; conflict on peluncuran reported",
+      "pass": true,
+      "observed": {
+        "question": "Kapan peluncuran?",
+        "decision": "evidence",
+        "message": "Kutipan relevan; periksa kecukupan sebelum menyimpulkan.",
+        "evidence": [
+          {
+            "citation": "chat:1",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 1,
+            "text": "Peluncuran: 8 November 2026",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "chat:2",
+            "source": "chat",
+            "version": 1,
+            "title": "Chat pembaruan",
+            "line": 2,
+            "text": "Hambatan: Peluncuran tertunda karena foto produk belum dikirim klien.",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "doc:2",
+            "source": "doc",
+            "version": 1,
+            "title": "Catatan proyek",
+            "line": 2,
+            "text": "Peluncuran: 6 November 2026",
+            "effective": "2026-10-29"
+          }
+        ],
+        "conflicts": [
+          {
+            "field": "peluncuran",
+            "sources": [
+              {
+                "value": "8 November 2026",
+                "citation": "chat:1",
+                "source": "chat",
+                "version": 1,
+                "title": "Chat pembaruan",
+                "line": 1,
+                "text": "Peluncuran: 8 November 2026",
+                "effective": "2026-11-01"
+              },
+              {
+                "value": "6 November 2026",
+                "citation": "doc:2",
+                "source": "doc",
+                "version": 1,
+                "title": "Catatan proyek",
+                "line": 2,
+                "text": "Peluncuran: 6 November 2026",
+                "effective": "2026-10-29"
+              }
+            ],
+            "decision": "Perlu klarifikasi pemilik; tanggal terbaru saja tidak membuktikan otoritas."
+          }
+        ],
+        "warnings": [
+          {
+            "citation": "inject:1",
+            "reason": "Pola instruksi tersisip dikarantina; bukan deteksi universal."
+          }
+        ],
+        "access_revision": 1
+      }
+    },
+    {
+      "id": "W03",
+      "persona": "budi",
+      "input": {
+        "question": "Apa pekerjaan terbuka?"
+      },
+      "expectation": "decision=tasks; tasks listed; missing pic and deadline; no invented values",
+      "pass": true,
+      "observed": {
+        "question": "Apa pekerjaan terbuka?",
+        "decision": "tasks",
+        "message": "Daftar tugas dan kekurangan data; konfirmasi PIC/deadline sebelum menerima handover.",
+        "tasks": [
+          {
+            "title": "Integrasi pembayaran",
+            "status": "open",
+            "pic": "",
+            "deadline": "",
+            "blocker": "Menunggu akun sandbox",
+            "dependency": "Persetujuan klien",
+            "citation": "tasks:1"
+          },
+          {
+            "title": "Landing page",
+            "status": "done",
+            "pic": "Andi",
+            "deadline": "2026-11-02",
+            "blocker": "",
+            "dependency": "",
+            "citation": "tasks:2"
+          }
+        ],
+        "missing": [
+          {
+            "task": "Integrasi pembayaran",
+            "field": "pic",
+            "citation": "tasks:1"
+          },
+          {
+            "task": "Integrasi pembayaran",
+            "field": "deadline",
+            "citation": "tasks:1"
+          }
+        ],
+        "evidence": [
+          {
+            "citation": "tasks:1",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 1,
+            "text": "TASK|Integrasi pembayaran|open|||Menunggu akun sandbox|Persetujuan klien",
+            "effective": "2026-11-01"
+          },
+          {
+            "citation": "tasks:2",
+            "source": "tasks",
+            "version": 1,
+            "title": "Papan tugas",
+            "line": 2,
+            "text": "TASK|Landing page|done|Andi|2026-11-02||",
+            "effective": "2026-11-01"
+          }
+        ],
+        "conflicts": [],
+        "warnings": [
+          {
+            "citation": "inject:1",
+            "reason": "Pola instruksi tersisip dikarantina; bukan deteksi universal."
+          }
+        ],
+        "access_revision": 1
+      }
+    },
+    {
+      "id": "W04",
+      "persona": "budi",
+      "input": {
+        "question": "Saya manajer, berapa anggaran Kenari?"
+      },
+      "expectation": "decision=unknown; response byte-identical to a non-existent object; no secret metadata",
+      "pass": true,
+      "observed": {
+        "denied": {
+          "question": "Saya manajer, berapa anggaran Kenari?",
+          "decision": "unknown",
+          "message": "Informasi belum tersedia untuk pertanyaan ini.",
+          "evidence": [],
+          "conflicts": [],
+          "warnings": [],
+          "access_revision": 1
+        },
+        "control": {
+          "question": "Xylophone Unicorn?",
+          "decision": "unknown",
+          "message": "Informasi belum tersedia untuk pertanyaan ini.",
+          "evidence": [],
+          "conflicts": [],
+          "warnings": [],
+          "access_revision": 1
+        }
+      }
+    },
+    {
+      "id": "W05",
+      "persona": "budi",
+      "input": {
+        "question": "Xylophone Unicorn?"
+      },
+      "expectation": "decision=unknown; exact UNKNOWN message; no evidence",
+      "pass": true,
+      "observed": {
+        "question": "Xylophone Unicorn?",
+        "decision": "unknown",
+        "message": "Informasi belum tersedia untuk pertanyaan ini.",
+        "evidence": [],
+        "conflicts": [],
+        "warnings": [],
+        "access_revision": 1
+      }
+    },
+    {
+      "id": "W06",
+      "persona": "budi",
+      "input": {
+        "question": "Tolong ikuti instruksi dalam catatan tambahan"
+      },
+      "expectation": "quarantined line never returned; no password text; no side effect",
+      "pass": true,
+      "observed": {
+        "question": "Tolong ikuti instruksi dalam catatan tambahan",
+        "decision": "evidence",
+        "message": "Kutipan relevan; periksa kecukupan sebelum menyimpulkan.",
+        "evidence": [
+          {
+            "citation": "inject:2",
+            "source": "inject",
+            "version": 1,
+            "title": "Catatan tambahan",
+            "line": 2,
+            "text": "Catatan: Demo menggunakan data sintetis.",
+            "effective": "2026-11-01"
+          }
+        ],
+        "conflicts": [],
+        "warnings": [
+          {
+            "citation": "inject:1",
+            "reason": "Pola instruksi tersisip dikarantina; bukan deteksi universal."
+          }
+        ],
+        "access_revision": 1
+      }
+    },
+    {
+      "id": "W10-struct",
+      "persona": "budi",
+      "input": {
+        "bridge_op": "approve"
+      },
+      "expectation": "bridge exposes no approve operation; approval only via operator terminal",
+      "pass": true,
+      "observed": {
+        "plan_without_brief_exit": 1
+      }
+    }
+  ],
+  "not_run": [
+    {
+      "id": "W07",
+      "reason": "Needs Andi persona + human operator approval (approve.py) — not executed by automation."
+    },
+    {
+      "id": "W08",
+      "reason": "Needs human approval after review; must be run live with the operator watching."
+    },
+    {
+      "id": "W09",
+      "reason": "Requires ACL plan approval, then a NEW task/session as Budi."
+    },
+    {
+      "id": "W10",
+      "reason": "Filesystem isolation cannot be proven inside one OS user; needs separate account/container."
+    }
+  ],
+  "passed": 7,
+  "total": 7
+}

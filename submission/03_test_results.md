@@ -2,9 +2,9 @@
 
 Synthetic deterministic core + local HTTP; NOT actual WorkBuddy/LLM or official tests
 
-Run UTC: 2026-11-01T15:17:30.469301+00:00
+Run UTC: 2026-11-02T03:42:31.658290+00:00
 
-28/28 lulus.
+32/32 lulus.
 
 | Kasus | Hasil |
 |---|---|
@@ -36,5 +36,31 @@ Run UTC: 2026-11-01T15:17:30.469301+00:00
 | test_26_invalid_session | PASS |
 | test_27_cross_workspace_access | PASS |
 | test_28_http_boundary | PASS |
+| test_29_open_tasks_intent | PASS |
+| test_30_task_intent_no_restricted_source | PASS |
+| test_31_status_intent_surfaces_conflict | PASS |
+| test_32_task_intent_empty_workspace | PASS |
 
-Dataset/test resmi: belum tersedia. Percakapan dan screenshot WorkBuddy: belum diuji/direkam. Deteksi instruksi tersisip memakai pola terbatas dan bukan jaminan keamanan LLM. Tidak ada pengukuran waktu hemat.
+## Lapisan bridge (HTTP client nyata)
+
+Real bridge.py -> HTTP -> local service, synthetic demo data. NOT a WorkBuddy conversation and NOT official committee tests.
+
+Run UTC: 2026-11-02T03:42:28.818378+00:00
+
+7/7 lulus.
+
+| Kasus | Hasil | Catatan |
+|---|---|---|
+| W01 | PASS | decision=evidence; chat:2 quoted; mentions foto produk |
+| W02 | PASS | doc:2 and chat:1 both quoted; conflict on peluncuran reported |
+| W03 | PASS | decision=tasks; tasks listed; missing pic and deadline; no invented values |
+| W04 | PASS | decision=unknown; response byte-identical to a non-existent object; no secret metadata |
+| W05 | PASS | decision=unknown; exact UNKNOWN message; no evidence |
+| W06 | PASS | quarantined line never returned; no password text; no side effect |
+| W10-struct | PASS | bridge exposes no approve operation; approval only via operator terminal |
+
+Belum dijalankan: W07, W08, W09, W10 (lihat WORKBUDDY_CASES.md).
+
+## Belum diuji
+
+Dataset/test resmi panitia: belum tersedia. Percakapan dan screenshot WorkBuddy: belum dijalankan. Deteksi instruksi tersisip memakai pola terbatas dan bukan jaminan keamanan LLM. Tidak ada pengukuran waktu hemat.
