@@ -50,7 +50,8 @@ class Store:
         return [dict(r) for r in self.db.execute('SELECT s.* FROM sources s JOIN acl a ON a.source=s.id WHERE s.workspace=? AND a.user=? ORDER BY s.id',(w,user))]
     def log(self,u,w,action,result):
         rev=self.ws(u,w)['revision']
-        self.db.execute('INSERT INTO audit(at,user,workspace,action,revision,body) VALUES(?,?,?,?,?,?)',(now(),u,w,action,rev,dump(result)));self.db.commit()
+        self.db.execute('INSERT INTO audit(at,user,workspace,action,revision,body) VALUES(?,?,?,?,?,?)',(now(),u,w,action,rev,dump(result)))
+        if not getattr(self,'defer_commit',False):self.db.commit()
     def invalidate(self,w):
         self.db.execute("UPDATE workspaces SET revision=revision+1,status='Draft' WHERE id=?",(w,))
     def evidence(self,user,w):
@@ -204,7 +205,7 @@ class Store:
             status={'review':'Ready for Acceptance','accept':'Accepted','clarify':'Needs Clarification'}[action]
             self.db.execute('UPDATE briefs SET status=? WHERE id=?',(status,p['brief']))
             self.db.execute('UPDATE workspaces SET status=? WHERE id=?',(status,w));result={'brief':p['brief'],'status':status}
-        self.db.execute("UPDATE plans SET status='Approved' WHERE id=?",(pid,));self.db.commit()
+        self.db.execute("UPDATE plans SET status='Approved' WHERE id=?",(pid,))
         self.log(u,w,'approved',{'plan':pid,'action':action,'details':p if action=='clarify' else result,'approval_channel':'operator terminal'})
         return result
 
