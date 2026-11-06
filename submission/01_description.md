@@ -1,29 +1,21 @@
 # Relayfy — AI Handover Assistant
 
-**Blurb (8 kata):** AI handovers with sources, access controls, and accountability.
+**Blurb (9 kata):** AI handovers with sources, access controls, and human approval.
 
-**Track:** A — The Workplace Brain. Skenario: riwayat proyek dan onboarding penerima handover.
+**Challenge A — The Workplace Brain.** Skenario project history dan perpindahan tanggung jawab.
 
-Relayfy membantu penerima tanggung jawab memahami status proyek, keputusan, pekerjaan terbuka, dan informasi yang masih kurang. Bahan handover berasal dari dokumen, ekspor chat, dan daftar tugas. Prototipe memisahkan pencarian berbasis izin dari antarmuka AI agar sumber dibatasi sebelum diteruskan ke model.
+Saat tanggung jawab berpindah, orang baru perlu memahami keputusan yang sudah diambil, pekerjaan yang masih terbuka dan alasan di baliknya. Konteks itu sering berada di dokumen, percakapan dan daftar tugas yang terpisah. Relayfy menyatukannya menjadi handover yang dapat ditanyakan, diperiksa sumbernya, lalu diterima sebagai versi yang jelas. Masalah ini adalah hipotesis produk; belum divalidasi melalui wawancara atau pengukuran di perusahaan.
 
-Persona sintetis: Andi menyerahkan proyek website kepada Budi. Tanggal peluncuran berbeda di catatan awal dan chat; tugas pembayaran belum memiliki PIC/deadline; anggaran hanya tersedia bagi manajer. Data ini adalah contoh, bukan hasil wawancara atau data perusahaan nyata. Validasi masalah dengan calon pengguna masih perlu dilakukan.
+Pengguna utama adalah pemberi pekerjaan, penerima dan anggota proyek. Dalam skenario sintetis Karsa, Andi menyerahkan proyek kepada Maya. Brief menunjukkan tujuan, keputusan, pekerjaan, hambatan dan informasi kosong. Chat membantu Maya menanyakan alasan penundaan dan memeriksa kutipannya. Konflik jadwal dari dua sumber tetap ditampilkan untuk diklarifikasi, bukan ditebak sebagai tanggal final.
 
-Alur: identifikasi sesi → filter sumber → pencarian/analisis → kutipan, konflik, dan gap → draf handover → review pemberi → penerimaan versi oleh penerima → audit. Sistem dapat meminta klarifikasi atau mengakui tidak tahu. Perubahan bisnis memakai preview dan persetujuan operator yang terpisah dari bridge.
+MVP web menampilkan Dashboard, Workspace, Ask Relayfy, daftar sumber/tugas, pemeriksaan kelengkapan, Review dan Activity Log. Pengguna dapat memasukkan teks, ekspor chat serta tugas terstruktur manual. Draf disusun berdasarkan sumber yang diizinkan bagi penerima dan pemberi, tetap privat sebelum ditinjau. Penerimaan berlaku pada versi tertentu; pembaruan sumber atau izin memerlukan peninjauan ulang.
 
-Implementasi: Python standard library, SQLite, API HTTP loopback, client tool, dan kontrak runtime WorkBuddy. Local engine mengekstrak bukti secara deterministik; model WorkBuddy menyusun jawaban dari bukti melalui tool. Percakapan model di WorkBuddy belum dijalankan; yang sudah diuji adalah lapisan service dan bridge.
+Arsitektur mempertahankan Python WSGI, SQLite dan HTML/CSS/JavaScript. Jalur AI utama adalah **antrean web → tool WorkBuddy → model dalam WorkBuddy → validator server → hasil web**. WorkBuddy menjadi runtime penalaran melalui client CLI Python atau empat tools MCP stdio. Website tidak memakai kredit WorkBuddy sebagai API publik. Adapter API model backend juga tersedia sebagai pilihan terpisah.
 
-## Status verifikasi (laptop pengguna, 2026-11-02)
+Otorisasi berada di kode. Identitas berasal dari sesi server, membership dan ACL diperiksa sebelum retrieval. Key worker dibatasi akun/workspace/revisi/tujuan; setiap klaim memerlukan ID dan kutipan persis dari bukti job. Lease, versi dan akses diperiksa kembali saat hasil diterima. Worker tidak dapat menjalankan approval. Import, audiens, review/share, klarifikasi dan accept melewati preview, konfirmasi aktor serta transaksi dengan audit. Pilihan profil foto adalah simulasi identitas khusus demo lokal dan dilarang pada konfigurasi produksi.
 
-| Lapisan | Hasil | Bukti |
-|---|---|---|
-| Uji otomatis inti | 33/33 lulus | `evidence/test-results.json` |
-| Demo lokal end-to-end (approval disimulasikan) | 21 event | `evidence/demo-transcript.json` |
-| Kasus bridge W01–W06 + struktur W10 | 7/7 lulus | `evidence/bridge-cases.json` |
-| Percakapan WorkBuddy | belum dijalankan | `tests/WORKBUDDY_CASES.md` |
-| Dataset resmi panitia | belum tersedia | — |
+Prompt berfungsi menjaga fokus penalaran: bukti dianggap data, instruksi tersisip diabaikan, identitas dari server tidak dapat diganti lewat chat, dan bukti yang tidak memadai menghasilkan unknown atau klarifikasi. Prompt tidak menggantikan batas akses. Struktur JSON dan kutipan dapat divalidasi, sedangkan kebenaran semantik masih membutuhkan review. Ketika konteks akses berubah, operator wajib membuka task WorkBuddy baru; server tidak dapat menghapus ingatan model atau menutup akses shell OS secara otomatis.
 
-Perbaikan yang ditemukan saat verifikasi: pertanyaan “Apa pekerjaan terbuka?” semula dijawab `unknown` karena pencarian hanya berbasis kata kunci. Ditambahkan routing intent deterministik (`tasks`, `missing`, `status`) yang mengembalikan daftar tugas dan menandai PIC/deadline kosong tanpa menebak. Perilaku ini dikunci dengan test 29–32.
+Manfaat yang ingin diuji adalah waktu memahami proyek, ketepatan jawaban bersumber dan penemuan informasi kurang sebelum tanggung jawab diterima. Belum ada angka penghematan. Evaluasi selanjutnya membandingkan pertanyaan manual dan Relayfy pada dataset yang sama dengan urutan acak, waktu, akurasi dan kegagalan yang dilaporkan apa adanya.
 
-Nilai yang ingin diuji: waktu mencari jawaban, ketepatan rujukan, jumlah gap ditemukan, dan ketepatan penolakan akses. Belum ada angka penghematan tervalidasi. Rencana pengukuran: minta beberapa pengguna menjawab kumpulan pertanyaan yang sama secara manual dan dengan Relayfy; acak urutan dan laporkan waktu, akurasi, ukuran sampel, serta keterbatasan.
-
-Pembeda: briefing sesuai audiens, konflik yang terlihat, status diterima per versi, dan pembatalan akses terhadap hasil turunan. Keterbatasan: pencarian kata kunci + intent regex (bukan semantik), ekstraksi task berformat, deteksi injeksi terbatas, isolasi OS belum dibuktikan, dan tidak ada dashboard web. Tidak mengklaim kesetaraan keamanan atau fitur dengan produk enterprise.
+Bukti lokal: 79 tes kode, 10 pemeriksaan runtime produksi, serta uji browser dua profil dengan import CSV, draf privat, kutipan, klarifikasi, review, accept, antrean dan revokasi. Jawaban model pada tes transport adalah fixture, bukan inferensi aktual. Aplikasi/model WorkBuddy, dataset resmi, video dan deploy belum diuji/dilakukan. Batas MVP mencakup retrieval kata, task terstruktur, konflik field tanpa penentuan otoritas otomatis dan autentikasi tanpa verifikasi email/SSO/MFA.

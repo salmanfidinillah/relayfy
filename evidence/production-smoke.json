@@ -1,0 +1,47 @@
+{
+  "run_at": "2026-11-04T13:54:04Z",
+  "scope": "Actual Gunicorn 26.2.0 production configuration on loopback; synthetic temporary database, NOT deployment or disk-mount verification",
+  "checks": [
+    {
+      "check": "production static assets served",
+      "passed": true
+    },
+    {
+      "check": "security headers present",
+      "passed": true
+    },
+    {
+      "check": "anonymous API rejected",
+      "passed": true
+    },
+    {
+      "check": "register through production HTTP",
+      "passed": true
+    },
+    {
+      "check": "production cookie Secure HttpOnly SameSite",
+      "passed": true
+    },
+    {
+      "check": "authenticated HTTP session",
+      "passed": true
+    },
+    {
+      "check": "database and session survive real process restart",
+      "passed": true
+    },
+    {
+      "check": "CSRF prevents mutation",
+      "passed": true
+    },
+    {
+      "check": "valid logout",
+      "passed": true
+    },
+    {
+      "check": "session revoked after logout",
+      "passed": true
+    }
+  ],
+  "docker_build": "NOT RUN: Docker executable unavailable"
+}

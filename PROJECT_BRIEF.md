@@ -1,7 +1,7 @@
 # Relayfy — AI Handover Assistant
 
 > Brief proyek untuk dibaca WorkBuddy sebelum merancang dan membangun MVP.
-> Status: konsep yang telah dipilih; implementasi dan hasil pengujian belum dibuat.
+> Status: spesifikasi produk. Pembaruan 4 November 2026: MVP web lokal + runtime antrean WorkBuddy; lihat MULAI_DI_SINI.md. Aplikasi WorkBuddy aktual masih menunggu. Pembaruan 2 November 2026: prototipe web tersedia; lihat README.md dan CHECKLIST.md untuk status implementasi serta bukti aktual. Inferensi provider nyata dan WorkBuddy masih menunggu.
 
 ## 1. Instruksi awal untuk WorkBuddy
 
@@ -273,3 +273,14 @@ Brief ini disusun dari keputusan produk pada percakapan Salman serta dokumen yan
 - Panduan_Hackathon_Tencent_WorkBuddy_Indonesia_2026.pdf — panduan terjemahan pendamping.
 
 Jika aturan resmi terbaru berbeda, jelaskan perbedaannya dan gunakan aturan terbaru yang dapat diverifikasi. Jangan mewarisi klaim keberhasilan proyek contoh sebagai keberhasilan Relayfy. File ini adalah brief, belum merupakan workflow yang diinstal, aplikasi, bukti keamanan, maupun hasil pengujian.
+
+## 15. Implementasi web — pembaruan 2 November 2026
+
+Permintaan terbaru pengguna memprioritaskan empat halaman web, akun/sesi, persetujuan UI dan persiapan deploy, tanpa push/deploy. Stack Python/SQLite dipertahankan dengan UI buildless. Penyimpanan produksi memerlukan volume permanen. Brief AI/Q&A memakai adapter API backend terpisah; kredensial belum tersedia. Lihat README.md, DEPLOY.md dan evidence/; bagian awal dokumen tetap merupakan target, bukan klaim semua fitur sudah terbukti. WorkBuddy belum digunakan aktual pada paket ini.
+
+
+## 16. MVP lokal WorkBuddy — pembaruan 4 November 2026
+
+Instruksi pengguna terbaru memprioritaskan MVP lokal dengan arah desain gelap seperti referensi dan demo melalui WorkBuddy. Landing/profil/halaman operasional ditambahkan; Python/SQLite serta sesi/ACL dipertahankan. Jalur utama kini antrean job web → client CLI/MCP → model WorkBuddy → validator → draf/jawaban, tanpa asumsi API publik WorkBuddy atau biaya API website. Adapter API tetap opsional.
+
+Profil foto adalah simulasi lokal khusus bahan sintetis, bukan pengganti autentikasi produksi. Review dan accept tetap di web. Key worker dibatasi aktor/workspace/revisi/tujuan dan tidak memiliki tool approval. Task/pairing baru diperlukan saat konteks berubah; isolasi OS tidak disediakan folder agent. Lihat CHECKLIST.md untuk status selesai, simulasi dan belum diuji. Deployment dan pengiriman submission belum dilakukan.

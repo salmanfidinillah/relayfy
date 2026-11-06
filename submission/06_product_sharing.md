@@ -1,45 +1,19 @@
-# Product sharing — catatan faktual
+# Product sharing — draf faktual
 
-Dua hal berbeda dan tidak boleh dicampur:
+Relayfy dibangun di ChatGPT/Codex dengan mempertahankan core Python/SQLite. Versi MVP ini menyiapkan WorkBuddy sebagai runtime agent, melalui antrean job web, CLI dan MCP. **Belum ada penggunaan aplikasi atau kredit WorkBuddy aktual yang dapat diklaim pada pembuatan paket ini.**
 
-1. **Sesi pengembangan WorkBuddy** (agent di workspace proyek) — benar-benar terjadi pada 2026-11-02 dan di bawah ini dirinci.
-2. **Sesi runtime WorkBuddy** (agent di folder `workbuddy/` menjawab pengguna lewat bridge) — **belum dijalankan**. Jangan klaim sudah.
+Rencana kontribusi WorkBuddy yang dapat dibuktikan: mengambil bukti berizin melalui next, menyusun jawaban/brief dengan model dalam WorkBuddy, lalu mengirim hasil melalui finish. Backend melakukan validasi dan UI menampilkan hasilnya. Ini peran runtime yang nyata setelah dijalankan, berbeda dari klaim WorkBuddy menulis seluruh kode. Pengujian CLI/MCP dengan jawaban fixture hanya membuktikan protokol berjalan.
 
-## Kontribusi nyata sesi pengembangan WorkBuddy
-
-| Aktivitas | Tindakan aktual | Hasil / perbaikan | Bukti |
+| Aktivitas | Status saat paket dibuat | Bukti yang harus diisi pengguna | Kredit awal / akhir |
 |---|---|---|---|
-| Membaca paket pembanding | Membaca README, PROJECT_BRIEF, CHECKLIST, AGENTS, WORKBUDDY_CASES, 00_index, lalu `service/core.py`, `server.py`, `bridge.py`, `demo.py`, `start.py`, `approve.py`, `import_source.py`, `test_relayfy.py` | Peta risiko: kasus W03 tidak terlayani oleh retrieval kata kunci | dokumen ini, `CHECKLIST.md` |
-| Menjalankan uji yang disertakan | `python tests/run_tests.py` | 28/28 lulus di laptop ini (Python 3.13.14, Windows) — bukan lagi klaim lingkungan lama | `evidence/test-results.json` |
-| Menjalankan demo lokal | `python demo.py` | 19 event: ask → analyze → import → brief → review → accept → revoke terbukti jalan | `evidence/demo-transcript.json` |
-| Menguji kasus W lewat bridge | `bridge.py ask` untuk W01–W06 dengan token persona asli | 5 lulus, **1 gagal**: “Apa pekerjaan terbuka?” → `unknown` | probe sebelum perbaikan |
-| Memperbaiki kegagalan | Menambah routing intent deterministik (`tasks`, `missing`, `status`) di `service/core.py`; menambah test 29–32 | 33/33 lulus; W03 kini `decision=tasks` dengan `missing={pic,deadline}` | `service/core.py`, `tests/test_relayfy.py` |
-| Menemukan tes flaky | Menjalankan suite berulang (5–12 kali) sebelum push | `test_28` gagal sekitar 1 dari 5 kali dengan `RemoteDisconnected`: server menolak request tanpa membaca body sehingga Windows me-reset koneksi | log eksekusi berulang |
-| Memperbaiki + regresi | `service/server.py` membaca body sebelum menolak; tambah test 33 (body 300 KB harus 413, bukan reset) | 33/33 lulus pada 10 kali eksekusi berturut-turut | `service/server.py`, `tests/test_relayfy.py` |
-| Menutup celah operasional | Menambah `session.py` (token satu persona di luar workspace) + fallback di `bridge.py` + `workbuddy/status.py` | WorkBuddy yang diluncurkan dari GUI tidak lagi bergantung pada pewarisan environment variable | output `status.py`: `bridge: OK, 1 workspace` |
-| Verifikasi lapisan bridge | Menulis `tests/bridge_cases.py` dan menjalankannya | 7/7 lulus (W01–W06 + struktur W10) | `evidence/bridge-cases.json` |
-| Memperbarui dokumen | CHECKLIST, README, WORKBUDDY_CASES, AGENTS, START_HERE, 01–07 submission | Status lokal vs bridge vs WorkBuddy dipisahkan eksplisit | `submission/` |
+| Menjalankan next untuk brief penerima | belum diuji di aplikasi WorkBuddy | ekspor percakapan/tool next; sumber berizin | belum diukur |
+| Menyusun brief dan finish | belum diuji di aplikasi WorkBuddy | keluaran model, tool finish Done, draf web | belum diukur |
+| Menjawab pertanyaan Maya | belum diuji di aplikasi WorkBuddy | next/finish dan kutipan hasil web | belum diukur |
+| Menangani konflik/unknown/injeksi | kode/fixture diuji; model aktual menunggu | percakapan dan hasil aktual, termasuk kegagalan | belum diukur |
+| Akses berubah: task dan pairing baru | backend diuji; perilaku WorkBuddy menunggu | penolakan tool lama dan proses ulang | belum diukur |
 
-## Yang belum terjadi (jangan diklaim)
+Pembelajaran yang benar-benar terjadi: otorisasi harus mendahului retrieval; sumber yang berubah juga membatalkan history, brief dan job. Draf harus privat sampai review/share. Key worker memerlukan batas tujuan agar brief penerima tidak memakai konteks pertanyaan privat pemberi. Lease mencegah hasil terlambat atau replay. Audit dan perubahan hasil perlu transaksi yang sama. UI harus menunjukkan Pending/Failed secara jujur ketika agent belum menyelesaikan pekerjaan.
 
-| Aktivitas | Status | Alasan |
-|---|---|---|
-| Percakapan runtime WorkBuddy | Belum | Perlu kamu buka `workbuddy/` sebagai workspace dan menjalankan W01–W10 |
-| Persetujuan manusia (W07–W08) | Belum | `approve.py` harus dijalankan dan SETUJU diketik oleh kamu |
-| Pencabutan akses (W09) | Belum | Butuh approval ACL lalu task baru |
-| Video demo | Belum | Naskah siap, rekaman belum ada |
-| Kredit WorkBuddy | Tidak diukur | Sesi ini tidak menampilkan angka kredit; jangan mengarang |
-| Test resmi panitia | Belum | Dataset belum tersedia |
+Uji browser membuktikan draf tidak terlihat penerima, klarifikasi diterima pemberi, acceptance tercatat, dan revokasi mengosongkan history/brief lama. CSV dengan koma dalam judul berhasil diimpor. Workspace baru dan input teks juga diuji; label peran sidebar diperbaiki agar mengikuti giver/receiver workspace, bukan badge profil global. Pemeriksaan menemukan label Catatan generik dapat menimbulkan konflik palsu; data demo diperjelas menjadi Arti penerimaan. Ini mengingatkan bahwa parser field belum memahami otoritas atau makna sumber.
 
-## Pembelajaran yang bisa dipertanggungjawabkan
-
-- **Unit test bisa menutupi kegagalan nyata.** 28 tes lulus, tetapi semuanya memakai frasa yang cocok dengan kata kunci sumber. Begitu diuji dengan kalimat wajar (“Apa pekerjaan terbuka?”), sistem menjawab tidak tahu. Harness harus memakai bahasa pengguna, bukan bahasa implementasi.
-- **Perbaikan harus menambah tes, bukan hanya mengubah kode.** Empat tes regresi (29–32) mengunci intent baru, termasuk memastikan intent tugas tidak membuka sumber terbatas.
-- **Pemisahan folder bukan isolasi.** `session.py` membuat demo lebih mudah, tetapi agent dengan shell pada akun OS yang sama masih bisa memanggilnya. Ini keterbatasan yang harus diucapkan di video, bukan disembunyikan.
-- **Persetujuan manusia harus berada di luar jalur agent.** Bridge tidak punya endpoint approve; ini keputusan desain yang murah dan langsung terlihat di demo.
-- **Kejujuran status menaikkan kredibilitas.** Menandai “belum diuji” pada percakapan WorkBuddy lebih kuat daripada klaim yang tidak bisa dibuktikan saat juri bertanya.
-- **Satu kali hijau belum berarti stabil.** Setelah 28 tes lulus, suite dijalankan berulang dan ditemukan kegagalan acak pada tes HTTP. Tanpa pengulangan, kegagalan itu akan muncul saat demo di depan juri.
-
-## Kalimat siap pakai untuk formulir
-
-> Kami memakai WorkBuddy sebagai pasangan pengembangan: membaca seluruh paket pembanding, menjalankan ulang 28 tes yang disertakan, menemukan satu kegagalan nyata pada pertanyaan “Apa pekerjaan terbuka?”, lalu memperbaikinya dengan routing intent deterministik dan empat tes regresi. WorkBuddy juga menemukan hambatan operasional — aplikasi GUI tidak mewarisi environment variable dan proxy mencegat trafik loopback — sehingga kami menambahkan token satu-persona di luar workspace serta melewati proxy untuk 127.0.0.1. Saat menjalankan suite berulang, ditemukan tes HTTP yang gagal acak; server kini membaca body sebelum menolak dan regresinya dikunci. Setelah perbaikan: 33/33 tes inti (stabil pada 10 eksekusi) dan 7/7 kasus bridge lulus. Sesi runtime WorkBuddy belum kami klaim karena belum dijalankan.
+Isi tabel dari bukti aktual setelah menjalankan WorkBuddy. Template ada di `../evidence/workbuddy-record-template.md`. Laporkan prompt, tools, kegagalan, perbaikan dan kredit apa adanya. Jangan mengarang angka penghematan, screenshot atau penggunaan WorkBuddy.

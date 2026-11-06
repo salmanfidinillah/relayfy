@@ -1,40 +1,37 @@
-# Checklist implementasi dan submission
+# Checklist Relayfy MVP — 4 November 2026
 
-Diperbarui: 2026-11-02 (laptop pengguna, Windows, Python 3.13.14). Status hanya diisi dari eksekusi nyata.
+Target terbaru: web lokal dengan desain gelap seperti referensi; serta alur agent melalui WorkBuddy. Pengujian aplikasi WorkBuddy, deployment, dan pengiriman submission masih menunggu.
 
-Legenda: **Selesai** (terbukti di laptop ini) · **Sebagian** (ada bukti, cakupan terbatas) · **Terhambat** (butuh pihak lain) · **Belum** (belum dikerjakan).
-
-| Item | Status | Bukti / keterbatasan |
+| Pekerjaan | Status | Bukti dan batas |
 |---|---|---|
-| Brief/handbook/playbook diperiksa | Selesai | PROJECT_BRIEF.md, submission/08_sources.md |
-| Struktur proyek & Python diperiksa | Selesai | Python 3.13.14, hanya stdlib; 31→37 file |
-| Uji otomatis inti | Selesai | 33/33 lulus — `evidence/test-results.json` |
-| Demo lokal end-to-end | Selesai | 21 event — `evidence/demo-transcript.json` (approval disimulasikan harness) |
-| Koneksi bridge nyata (HTTP client) | Selesai | 7/7 kasus W — `evidence/bridge-cases.json` |
-| Workspace dan sumber manual | Selesai | `service/core.py`, `import_source.py` |
-| Hak akses sebelum retrieval | Selesai pada API | Test 01–06, W04; filesystem WorkBuddy belum terisolasi |
-| Brief dan tasks | Selesai ekstraktif | Format TASK terstruktur; generasi bahasa alami belum diuji |
-| Tanya jawab bersumber | Sebagian | Retrieval kata + intent tugas/status; kualitas model WorkBuddy belum diuji |
-| Kelengkapan | Sebagian | PIC/deadline tugas terbuka; pemeriksaan lebih luas perlu model |
-| Konflik | Selesai field terstruktur | Eskalasi manusia; tidak otomatis mengesahkan sumber |
-| Review/accept/clarify/versi | Selesai | `plan` + `approve.py`; approval manusia |
-| Audit | Selesai hasil tool | Ekspor percakapan WorkBuddy masih diperlukan |
-| Perbaikan temuan W03 | Selesai | "Apa pekerjaan terbuka?" dulu `unknown` → kini `decision=tasks` + `missing`; regresi test_29–32 |
-| Sesi runtime tanpa env var | Selesai | `session.py` + fallback `active-token`; diuji lewat `workbuddy/status.py` |
-| Trafik loopback tanpa proxy | Selesai | `bridge.py` memakai `ProxyHandler({})`; laptop ini menyalakan `HTTP_PROXY` |
-| Guard `approve.py` | Selesai | Input selain `SETUJU` ditolak; jumlah sumber tidak berubah |
-| Uji state baru (port 8799) | Selesai | Seeding → session → ask → plan → penolakan approve berjalan |
-| Percakapan aktual WorkBuddy | Belum | Perlu kamu buka `workbuddy/` sebagai workspace (W01–W06) |
-| Persetujuan manusia W07–W08 | Belum | Perlu `approve.py` + ketik SETUJU sendiri |
-| Pencabutan akses W09 | Belum | Perlu approval ACL lalu task baru |
-| Isolasi filesystem agent | Belum | Butuh akun OS/container terpisah sebelum data nyata |
-| Dataset/test resmi | Terhambat | Belum diberikan panitia; semua data sintetis |
-| UI/deploy | Belum | Sengaja ditunda; prioritas pada workflow WorkBuddy |
-| Deskripsi/akuntabilitas/arsitektur | Selesai draf | `submission/` |
-| Video demo | Belum | Naskah siap, belum direkam |
-| Product sharing | Sebagian | Draf jujur; kontribusi WorkBuddy aktual belum ada |
-| Repo publik | Belum | Kamu minta tidak push |
-| Form submission | Belum | Draf berdasarkan handbook; form terbaru belum diperiksa |
-| Kredit WorkBuddy | Belum diukur | Tidak ada akun WorkBuddy dipakai di sesi ini |
+| Inspeksi fondasi dan baseline | selesai | Core Python/SQLite dipertahankan; baseline 59 tes |
+| Perhalusan landing editorial | selesai | Pratinjau tab, keyboard, kutipan, FAQ, dark/light, CTA; evidence/landing-polish.md |
+| Landing, profil foto, Dashboard dan sidebar | selesai | web/; foto/identitas sintetis, visual diperiksa browser desktop |
+| Workspace, Chat, Sumber, Task, Gaps, Review, Log | selesai | UI terhubung API nyata; tanpa respons AI hardcoded |
+| Mode profil lokal + sesi server | selesai | 4 profil; demo ditolak produksi; akun sungguhan tetap tersedia |
+| Auth / membership / ACL sebelum retrieval | selesai | Scrypt, cookie, origin/CSRF; test lintas akun dan nonanggota |
+| Import teks/chat/TXT/MD/CSV/JSON | selesai | Paste dan file chooser CSV diuji; semua format file belum diuji via browser |
+| Kutipan, tugas, gap dan konflik | selesai | Parser terstruktur/kata; otoritas konflik tidak ditebak |
+| Draf privat dan human review/share | selesai | Browser membuktikan draf tidak terlihat penerima sebelum dibagikan |
+| Klarifikasi dan accept versi | selesai | Browser dua profil; preview/konfirmasi; tugas terbuka tetap ada |
+| Antrean WorkBuddy + scoped pairing | selesai | Key akun/workspace/revisi/tujuan, lease/expiry, cancel/fail/replay |
+| CLI HTTP + MCP stdio empat tools | selesai | Subprocess nyata dalam tes, jawaban fixture berlabel |
+| Revokasi sumber dan hasil turunan | selesai | Kode + browser; history/brief/job/plan lama ditolak |
+| Hasil/job/audit atomik | selesai | Kegagalan audit membatalkan penyimpanan hasil dan approval |
+| Test utama 79/79 | selesai | evidence/test-results.json; 20 tes runtime agent ditambahkan |
+| Build aset | selesai | dist/build-manifest.json; source tetap buildless |
+| Gunicorn restart/session 10/10 | selesai | evidence/production-smoke.json; loopback, bukan deploy/volume hosting |
+| Uji browser desktop dua profil | selesai | evidence/browser-mvp.md; klik approval dilakukan otomasi QA |
+| Quickstart dan prompt satu job | selesai | MULAI_DI_SINI.md; relayfy-agent/START_HERE.md |
+| Deskripsi, accountability satu halaman, diagram | selesai | submission/; PDF/SVG dirender dan diperiksa |
+| Naskah video 5–8 menit | selesai | submission/05_demo_video_script.md; bukan video jadi |
+| Product sharing dan draf form | selesai | Draf faktual; kontribusi WorkBuddy aktual belum terisi |
+| Paket clean ZIP / uji hasil ekstraksi | selesai | 79 tes dari ekstraksi, manifest/secret check, demo HTTP/restart/backup; evidence/artifact-checks.json |
+| Aplikasi/model WorkBuddy aktual | terhambat | Tidak tersedia pada lingkungan pembuat; jalankan di laptop operator |
+| Provider API opsional nyata | terhambat | Key/model belum tersedia; tidak diperlukan untuk jalur WorkBuddy lokal |
+| Dataset dan test case resmi | terhambat | Belum tersedia; pengujian lokal sintetis |
+| Windows launcher / mobile fisik | belum dikerjakan | Disiapkan, belum diuji pada perangkat tersebut |
+| Docker image / volume hosting / redeploy | belum dikerjakan | Docker tidak tersedia; deployment tidak diotorisasi |
+| Video dan formulir | belum dikerjakan | Repositori sumber tersedia di GitHub |
 
-Status paket: **siap didemokan secara lokal dan lewat bridge**; percakapan WorkBuddy serta seluruh bukti submission (screenshot, video, repo) masih menunggu tindakan manusia.
+Folder agent bukan sandbox OS. Task baru dan pairing ulang wajib saat konteks akses berubah. Server dapat menolak hasil lama tetapi tidak dapat menghapus ingatan model atau informasi yang sudah dilihat. Kebenaran semantik tetap memerlukan review. Tidak ada klaim penghematan waktu atau kredit WorkBuddy yang belum diukur.

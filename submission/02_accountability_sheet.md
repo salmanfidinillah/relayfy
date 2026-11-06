@@ -1,18 +1,17 @@
 # Relayfy — Accountability Sheet
 
-**Lingkup:** prototipe lokal, data sintetis, Challenge A.
+**Pemilik:** Salman Fidinillah · **Lingkup:** MVP web + runtime WorkBuddy, Challenge A, data sintetis.
 
-| Area | Kebijakan dan implementasi |
+| Area | Perilaku aktual |
 |---|---|
-| Identitas | Token per pengguna dari operator (env atau file sesi di luar workspace); klaim peran dalam chat tidak dipercaya API. |
-| Akses | Membership workspace dan ACL sumber diperiksa sebelum pencarian; kutipan dan brief diperiksa ulang. |
-| Otonom | Membaca sumber berizin, mengambil kutipan, mendeteksi konflik field, menandai PIC/deadline kosong, membuat draf, mencatat hasil tool. |
-| Persetujuan | Import, perubahan ACL, review, klarifikasi tercatat, dan accept memakai plan dengan preview, revision, dan persetujuan terminal operator. |
-| Larangan | Tidak mengirim email, memublikasikan data, mengarang sumber, mengganti identitas berdasarkan chat, atau melewati persetujuan. Bridge tidak memiliki endpoint approve. |
-| Ketidakpastian | Bukti kosong memakai respons generik. Konflik tidak diselesaikan hanya dari tanggal terbaru. |
-| Rekam | Timestamp, identitas, query/tool, sumber/versi, hasil, dan approval tersimpan SQLite. Audit pengguna dibatasi pemilik dan revision aktif. |
-| Perubahan akses | Revision meningkat; plan/brief lama ditolak dan audit lama disembunyikan dari tampilan pengguna. |
-| Batas aktual | Agent bershell pada akun OS sama mungkin dapat melewati batas filesystem, menjalankan `session.py`, atau `approve.py`. Isolasi kuat memerlukan akun/container terpisah. Model tidak dapat “melupakan” data yang sudah dilihat; task baru diperlukan setelah perubahan persona/izin. |
-| Status uji | 33/33 tes inti, 7/7 kasus bridge, demo 21 event (approval disimulasikan). Percakapan WorkBuddy, test resmi, dan isolasi OS belum diuji. |
+| Identitas | Sesi server dan password scrypt; chat tidak mengubah peran. Profil foto adalah simulasi khusus demo lokal, dilarang di produksi. Produksi: Secure/HttpOnly, origin dan CSRF; belum verifikasi email/SSO/MFA. |
+| Akses | Membership/ACL sebelum retrieval; browser dan worker hanya menerima bukti berizin. Brief mengikuti akses penerima dan pemberi. Key worker terikat akun, workspace, revisi, tujuan dan masa berlaku. |
+| Otonom | Retrieval, task/gap terstruktur, konflik field dan draf privat. WorkBuddy mengisi job via CLI/MCP. Kutipan/lease/revisi divalidasi; tool agent tidak bisa menyetujui tindakan bisnis. |
+| Persetujuan | Import/audiens, review/share, klarifikasi dan accept melalui preview serta konfirmasi UI. Actor/revisi/status/brief terbaru diperiksa lagi. Mutasi dan audit approval satu transaksi. |
+| Ketidakpastian | Tanpa bukti: belum diketahui tanpa menyiratkan sumber privat. Konflik: tampilkan dua rujukan dan minta klarifikasi. PIC/deadline kosong tidak ditebak. Kutipan valid belum menjamin makna klaim benar. |
+| Rekam | Query, sumber, versi, job, hasil, approval dan tindakan di SQLite. UI audit hanya aktivitas sendiri pada revisi aktif. Token tidak dicetak ke log; audit bukan immutable. |
+| Revokasi | Request berikut mengikuti ACL baru; history/brief/job/lease/plan lama ditolak. UI polling sekitar 3 detik. Task dan pairing baru wajib; ingatan model/data yang sudah dilihat tidak bisa dihapus server. |
+| Batas agent | Evidence adalah data, bukan instruksi. Tidak mengirim email, membeli layanan atau memublikasikan otomatis. Folder agent bukan sandbox OS; data nyata memerlukan isolasi filesystem dan evaluasi. |
+| Bukti aktual | 79 tes, 10 smoke checks, browser dua profil. CLI HTTP/MCP stdio memakai fixture berlabel; aplikasi/model WorkBuddy, provider API nyata, dataset resmi, Docker, video dan deploy belum diverifikasi. Tidak ada klaim penghematan. |
 
-**Pemilik evaluasi:** Salman Fidinillah. **Sumber data:** sintetis. **Produksi:** belum siap. Bukti respons bahasa alami harus ditambahkan dari sesi WorkBuddy; audit tool tidak menggantikannya.
+**Sebelum data nyata:** verifikasi identitas, kualitas model, isolasi agent, HTTPS, volume/backup dan evaluasi independen. Demo dan persetujuan klik otomatis pada pengujian bukan persetujuan pengguna bisnis nyata.

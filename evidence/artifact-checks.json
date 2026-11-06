@@ -1,0 +1,44 @@
+{
+  "run_at": "2026-11-04T14:03:19Z",
+  "scope": "Actual clean ZIP extraction, 79 tests, HTTP one-command demo and process restart. Synthetic data; evidence mode only. NO WorkBuddy application or LLM inference.",
+  "checks": {
+    "zip_integrity": true,
+    "no_runtime_database_or_credentials": true,
+    "all_manifest_sha256_match": true,
+    "portrait_asset_packaged": true,
+    "clean_zip_test_suite": true,
+    "clean_demo_starts_without_api_key": true,
+    "clean_demo_four_profiles": true,
+    "demo_receiver_source_filter": true,
+    "demo_exact_gap_conflict_counts": true,
+    "clean_portrait_http": true,
+    "clean_evidence_labeled_no_model": true,
+    "demo_session_survives_process_restart": true,
+    "demo_answer_survives_process_restart": true,
+    "sqlite_online_backup_restore_read": true
+  },
+  "clean_zip_extracted_test_suite": {
+    "passed": 79,
+    "tests": 79
+  },
+  "artifact_visual_checks": {
+    "accountability_pdf_one_page": true,
+    "accountability_pdf_render_review": true,
+    "architecture_svg_valid_and_render_review": true
+  },
+  "initial_failures": [
+    {
+      "check": "production smoke startup",
+      "cause": "gunicorn missing in active Python runtime",
+      "resolution": "Installed pinned requirements; rerun 10/10 passed"
+    }
+  ],
+  "limitations": [
+    "WorkBuddy application/model not tested",
+    "API model provider not tested",
+    "Official dataset not available",
+    "Windows and mobile device not tested",
+    "Docker and hosting deployment not run"
+  ],
+  "final_asset_validation": "Final JS role label corrected after clean-backend test; node syntax/build and actual browser reload passed. Backend source unchanged."
+}
