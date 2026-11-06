@@ -1,0 +1,11 @@
+.env
+.env.*
+.git
+__pycache__
+**/__pycache__
+*.sqlite*
+evidence
+node_modules
+dist
+relayfy-agent/relayfy-connection.json
+relayfy-agent/reply*.json

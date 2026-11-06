@@ -1,0 +1,9 @@
+{
+  "name": "relayfy-web",
+  "private": true,
+  "version": "0.3.0",
+  "scripts": {
+    "dev": "python3 run_demo.py --host 0.0.0.0 --port ${PORT:-3000}",
+    "build": "python3 scripts/build.py"
+  }
+}
